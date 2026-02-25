@@ -5,16 +5,14 @@ export const useDashboardStore = defineStore('dashboard', () => {
   // 1. 待办事项数据
   const todos = useLocalStorage('my-todos', [
     { id: 1, text: '完成个人博客的基础搭建与自动化部署', done: true },
-    { id: 2, text: '熟记并背诵 CET-6 高频词汇 50 个', done: false },
-    { id: 3, text: '408 计算机基础：复习数据结构（二叉树章节）', done: false },
-    { id: 4, text: '下午摸鱼时间，记得给蛋蛋开个主食罐头 🐈', done: false }
+    { id: 2, text: '下午摸鱼时间，记得给蛋蛋开个主食罐头 🐈', done: false }
+    { id: 3, text: '复习前端知识点', done: false }
   ])
 
   // 2. 进度条数据
-  const progressList = useLocalStorage('my-progress', [
-    { id: 1, name: '408 考研专业课总进度', value: 15 },
-    { id: 2, name: '日语学习进度', value: 5 },
-    { id: 3, name: 'VitePress 博客改造计划', value: 85 }
+  const progressList = useLocalStorage('my-progress', [,
+    { id: 1, name: 'VitePress 博客改造计划', value: 85 }
+    { id: 2, name: 'Vue 项目学习进度', value: 15 }
   ])
 
   // 3. 随笔数据
