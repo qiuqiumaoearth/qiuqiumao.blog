@@ -29,6 +29,9 @@
     "vitepress": "^1.6.4"
   },
   "dependencies": {
-    "@sugarat/theme": "^0.5.14"
+    "@sugarat/theme": "^0.5.14",
+    "@vueuse/core": "^14.2.1",
+    "@vueuse/shared": "^14.2.1",
+    "pinia": "^3.0.4"
   }
 }
