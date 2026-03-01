@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2026-03-01",
+    "tasks": [
+      { "id": 1, "text": "前端:Vue 3 响应式原理", "done": false },
+      { "id": 2, "text": "算法：二分查找练习", "done": false }
+    ]
+  },
+  {
+    "date": "2026-03-02",
+    "tasks": [
+      { "id": 1, "text": "前端:Pinia 深入理解", "done": false },
+      { "id": 2, "text": "算法：滑动窗口", "done": false }
+    ]
+  }
+]

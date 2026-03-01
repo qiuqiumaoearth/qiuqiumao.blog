@@ -20,8 +20,10 @@ export default defineConfig({
   themeConfig: {
     // 网站左上角的导航栏
     nav: [
-      { text: '首页', link: '/' },
-      { text: '关于我', link: '/about' }
+      { text: '首页', link: '/pages/index.md' },
+      { text: '学习主控台', link: '/pages/dashboard.md' },
+      { text: '关于我', link: '/about' },
+
     ],
     // 右上角的社交链接
     socialLinks: [
