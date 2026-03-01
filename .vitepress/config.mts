@@ -12,7 +12,7 @@ export default defineConfig({
   // 3. 继承生成的配置（注意这里不用加括号了）
   extends: blogTheme,
   
-  base: '/qiuqiumao.blog/', // 保持之前的配置，确保部署不断联
+  // 👇 已经将 base 彻底删除，默认使用顶级根目录 '/'
   lang: 'zh-CN',            // 网站全局语言设为纯中文
   title: "秋猫的博客",
   description: "记录生活与技术",
@@ -25,7 +25,8 @@ export default defineConfig({
     ],
     // 右上角的社交链接
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/qiuqiumaoearth/qiuqiumao.blog' } 
+      
+      { icon: 'github', link: 'https://github.com/qiuqiumaoearth/qiuqiumaoearth.github.io' } 
     ],
     aside: 'left', 
     
