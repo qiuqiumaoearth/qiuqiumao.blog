@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { nav } from './configs/index.mjs'
 
 // 1. 引入博客主题的最新配置生成器
 import { getThemeConfig } from '@sugarat/theme/node'
@@ -11,6 +12,7 @@ const blogTheme = getThemeConfig({
 export default defineConfig({
   // 3. 继承生成的配置（注意这里不用加括号了）
   extends: blogTheme,
+  srcDir: 'Article',
   
   // 👇 已经将 base 彻底删除，默认使用顶级根目录 '/'
   lang: 'zh-CN',            // 网站全局语言设为纯中文
@@ -19,12 +21,7 @@ export default defineConfig({
 
   themeConfig: {
     // 网站左上角的导航栏
-    nav: [
-      { text: '首页', link: '/pages/index.md' },
-      { text: '学习主控台', link: '/pages/dashboard.md' },
-      { text: '关于我', link: '/about' },
-
-    ],
+    nav,
     // 右上角的社交链接
     socialLinks: [
       
