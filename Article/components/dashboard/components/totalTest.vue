@@ -2,30 +2,53 @@
   import { useTotalTestStore } from '../store/totalTestStore.js'
 
   const store = useTotalTestStore()
+
+  // 计算百分比
+  const getPercent = task => {
+    if (!task.total) return 0
+    return Math.round((task.now / task.total) * 100)
+  }
 </script>
 
 <template>
   <div class="ticktick-container">
     <div class="header">
       <h2>🚩总任务清单</h2>
-      <span class="date">总的任务数：{{ store.allTasks }}</span>
+      <span class="date">总任务数：{{ store.allTasks }}</span>
     </div>
 
     <div class="task-section" v-if="store.pendingTasks.length > 0">
       <h4 class="section-title">进行中</h4>
-
       <ul class="task-list">
-        <li v-for="task in store.pendingTasks" :key="task.id" class="task-item">
+        <li
+          v-for="task in store.pendingTasks"
+          :key="task.id"
+          class="task-item"
+          :class="{ completed: task.done }"
+        >
           <label class="checkbox-container">
             <input type="checkbox" v-model="task.done" />
             <span class="checkmark"></span>
 
             <div class="task-content">
-              <span class="task-text">
-                {{ task.text }}
+              <!-- 第一行 -->
+              <div class="task-row">
+                <span class="task-text">
+                  {{ task.text }}
+                </span>
+
                 <!-- 进度条 -->
-                {{ Math.round((task.now / task.total) * 100) }}%
-              </span>
+                <div class="progress-wrapper">
+                  <div
+                    class="progress-bar"
+                    :style="{
+                      width: getPercent(task) + '%'
+                    }"
+                  ></div>
+                </div>
+
+                <span class="progress-percent">{{ getPercent(task) }}%</span>
+              </div>
 
               <!-- 详情 -->
               <div class="task-detail">
@@ -36,18 +59,60 @@
         </li>
       </ul>
     </div>
+
+    <!-- 已完成 -->
+    <div class="task-section" v-if="store.completedTasks.length > 0">
+      <h4 class="section-title completed-title">已完成</h4>
+
+      <ul class="task-list">
+        <li
+          v-for="task in store.completedTasks"
+          :key="task.id"
+          class="task-item completed"
+        >
+          <label class="checkbox-container">
+            <input type="checkbox" v-model="task.done" />
+            <span class="checkmark"></span>
+
+            <div class="task-content">
+              <div class="task-row">
+                <span class="task-text">
+                  {{ task.text }}
+                </span>
+
+                <div class="progress-wrapper">
+                  <div
+                    class="progress-bar"
+                    :style="{
+                      width: getPercent(task) + '%'
+                    }"
+                  ></div>
+                </div>
+
+                <span class="progress-percent">{{ getPercent(task) }}%</span>
+              </div>
+
+              <div class="task-detail">
+                {{ task.detail }}
+              </div>
+            </div>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <div v-else class="empty-state"></div>
   </div>
 </template>
 
 <style scoped>
-  /* 滴答清单的极简风格 CSS */
   .ticktick-container {
-    max-width: 600px;
+    max-width: 37.5rem;
     margin: 0 auto;
     background: var(--vp-c-bg);
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    padding: 30px;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+    padding: 1.875rem;
     font-family:
       -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
@@ -56,176 +121,161 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
+
   .header h2 {
     margin: 0;
     font-size: 1.5rem;
     color: var(--vp-c-text-1);
     border: none;
   }
+
   .date {
     color: var(--vp-c-brand);
     font-weight: bold;
     background: var(--vp-c-brand-soft);
-    padding: 4px 12px;
-    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1.25rem;
     font-size: 0.9rem;
   }
 
-  /* 输入框样式 */
-  .input-box {
-    margin-bottom: 30px;
-  }
-  .input-wrapper {
-    display: flex;
-    align-items: center;
-    background: var(--vp-c-bg-soft);
-    border-radius: 12px;
-    padding: 12px 16px;
-    border: 1px solid transparent;
-    transition: all 0.3s;
-  }
-  .input-wrapper:focus-within {
-    border-color: var(--vp-c-brand);
-    background: var(--vp-c-bg);
-    box-shadow: 0 0 0 2px var(--vp-c-brand-soft);
-  }
-  .plus-icon {
-    color: var(--vp-c-text-3);
-    font-size: 1.2rem;
-    margin-right: 12px;
-    font-weight: bold;
-  }
-  .input-wrapper input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    outline: none;
-    font-size: 1rem;
-    color: var(--vp-c-text-1);
-  }
-
-  /* 列表区域 */
   .section-title {
     font-size: 0.85rem;
     color: var(--vp-c-text-3);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-    margin-top: 0;
+    letter-spacing: 0.0625rem;
+    margin-bottom: 0.75rem;
   }
+
   .task-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
+
   .task-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
+    padding: 0.875rem 1rem;
     background: var(--vp-c-bg-soft);
-    margin-bottom: 8px;
-    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    border-radius: 0.625rem;
     transition: all 0.2s;
-    border: 1px solid transparent;
-  }
-  .task-item:hover {
-    border-color: var(--vp-c-divider);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 0.0625rem solid transparent;
   }
 
-  /* 自定义打勾框 */
+  .task-item:hover {
+    border-color: var(--vp-c-divider);
+    transform: translateY(-0.0625rem);
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.04);
+  }
+
   .checkbox-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
-    user-select: none;
-    flex: 1;
+    width: 100%;
   }
+
   .checkbox-container input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
   }
+
   .checkmark {
-    height: 20px;
-    width: 20px;
-    background-color: transparent;
-    border: 2px solid var(--vp-c-text-3);
-    border-radius: 6px;
-    margin-right: 12px;
-    transition: all 0.2s;
+    height: 1.25rem;
+    width: 1.25rem;
+    border: 0.125rem solid var(--vp-c-text-3);
+    border-radius: 0.375rem;
+    margin-right: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .checkbox-container:hover input ~ .checkmark {
-    border-color: var(--vp-c-brand);
-  }
-  .checkbox-container input:checked ~ .checkmark {
-    background-color: var(--vp-c-brand);
-    border-color: var(--vp-c-brand);
-  }
-  .checkbox-container input:checked ~ .checkmark:after {
-    content: '✔';
-    color: white;
-    font-size: 12px;
+    transition: all 0.2s;
   }
 
-  /* 文本和按钮 */
+  .checkbox-container:hover .checkmark {
+    border-color: var(--vp-c-brand);
+  }
+
+  .checkbox-container input:checked ~ .checkmark {
+    background: var(--vp-c-brand);
+    border-color: var(--vp-c-brand);
+  }
+
+  .checkbox-container input:checked ~ .checkmark::after {
+    content: '✔';
+    color: white;
+    font-size: 0.75rem;
+  }
+
   .task-content {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
+  /* 第一行 */
+  .task-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* 任务文字 */
   .task-text {
+    flex: 1;
     font-size: 1rem;
     color: var(--vp-c-text-1);
-    transition: all 0.2s;
   }
+
+  /* 进度条容器 */
+  .progress-wrapper {
+    width: 3rem;
+    height: 0.4rem;
+    background: var(--vp-c-bg-mute);
+    border-radius: 1.25rem;
+    overflow: hidden;
+  }
+
+  /* 进度条 */
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--vp-c-brand), #7aa2ff);
+    border-radius: 1.25rem;
+    transition: width 0.4s ease;
+  }
+
+  /* 百分比 */
+  .progress-percent {
+    font-size: 0.75rem;
+    color: var(--vp-c-text-3);
+    width: 2.5rem;
+    text-align: right;
+  }
+
+  /* 任务详情 */
+  .task-detail {
+    margin-top: 0.375rem;
+    font-size: 0.8rem;
+    color: #b9b9c7;
+  }
+
+  /* 完成状态 */
   .completed .task-text {
     text-decoration: line-through;
     color: var(--vp-c-text-3);
   }
-  .task-detail {
-    margin-top: 6px;
-    font-size: 0.8rem;
-    line-height: 1;
-    color: #b9b9c7;
-  }
-  .completed .task-item {
+
+  .completed {
     opacity: 0.7;
   }
-  .delete-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.2s;
-    font-size: 1.1rem;
-  }
-  .task-item:hover .delete-btn {
-    opacity: 1;
-  }
 
-  /* 动画过渡 */
-  .list-enter-active,
-  .list-leave-active {
-    transition: all 0.3s ease;
-  }
-  .list-enter-from,
-  .list-leave-to {
-    opacity: 0;
-    transform: translateX(20px);
-  }
+  /* 空状态 */
   .empty-state {
     text-align: center;
     color: var(--vp-c-text-3);
-    padding: 40px 0;
+    padding: 2.5rem 0;
   }
 </style>
