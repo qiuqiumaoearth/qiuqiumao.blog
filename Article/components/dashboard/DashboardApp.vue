@@ -1,6 +1,6 @@
 <script setup>
   import TickTick from './components/TickTick.vue'
-  import TotalTest from './components/TotalTest.vue'
+  import TotalTest from './components/totalTest.vue'
 </script>
 
 <template>
