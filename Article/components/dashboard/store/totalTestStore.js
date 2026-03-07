@@ -2,9 +2,7 @@ import { defineStore } from 'pinia'
 import totalTestData from '../data/totalTestData.json'
 import { ref, computed } from 'vue'
 
-
 export const useTotalTestStore = defineStore('totalTest', () => {
-
   // 所有模板数据
   const totalTest = ref(totalTestData)
 
@@ -18,10 +16,10 @@ export const useTotalTestStore = defineStore('totalTest', () => {
     totalTest.value.tasks.filter(t => t.done)
   )
 
-  //所有任务
-  const allTasks = computed(() =>
-    totalTest.value.tasks.length
-  )
+
+
+  // 所有任务数量
+  const allTasks = computed(() => totalTest.value.tasks.length)
 
   return {
     totalTest,
@@ -29,5 +27,4 @@ export const useTotalTestStore = defineStore('totalTest', () => {
     completedTasks,
     allTasks
   }
-
 })
