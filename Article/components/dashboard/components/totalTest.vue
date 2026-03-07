@@ -100,8 +100,6 @@
         </li>
       </ul>
     </div>
-
-    <div v-else class="empty-state"></div>
   </div>
 </template>
 
