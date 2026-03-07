@@ -12,5 +12,31 @@
       { "id": 1, "text": "前端:Pinia 深入理解", "done": false },
       { "id": 2, "text": "算法：滑动窗口", "done": false }
     ]
+  },
+  {
+    "date": "2026-03-07",
+    "tasks": [
+      { "id": 1, "text": "原始类型", "done": true },
+      { "id": 2, "text": "对象类型", "done": true },
+      { "id": 3, "text": "typeof和instanceof", "done": true },
+      { "id": 4, "text": "类型转换", "done": true },
+      { "id": 5, "text": "== 和 ===", "done": true },
+      { "id": 6, "text": "new构造调用的过程", "done": true },
+      { "id": 7, "text": "this全解析", "done": false },
+      { "id": 8, "text": "闭包", "done": false },
+      { "id": 9, "text": "原型、原型链", "done": false },
+      { "id": 10, "text": "浅拷贝、深拷贝", "done": false },
+      { "id": 11, "text": "继承", "done": false },
+      { "id": 12, "text": "ES6", "done": false },
+      { "id": 13, "text": "JavaScript异步", "done": false },
+      { "id": 14, "text": "EventLoop事件循环", "done": false }
+    ]
+
+      
+
+      
+
+
+
   }
 ]

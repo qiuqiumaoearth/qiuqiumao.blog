@@ -1,8 +1,7 @@
 <script setup>
-import MyCalendar from './components/MyCalendar.vue'
 import TickTick from './components/TickTick.vue'
-import StudyChart from './components/StudyChart.vue'
-import StreakCard from './components/StreakCard.vue'
+import TotalTest from './components/TotalTest.vue'
+
 
 </script>
 
@@ -14,20 +13,12 @@ import StreakCard from './components/StreakCard.vue'
     </header>
 
     <main class="dashboard-main">
-      <div class="streak-card">
-        <StreakCard />
-      </div>
-      <div class="calendar">
-        <MyCalendar />
+      <div class="total-test">
+        <TotalTest />
       </div>
       <div class="ticktick">
         <TickTick />
       </div>
-      <div class="chart">
-        <StudyChart />
-      </div>
-
-
     </main>
   </div>
 </template>
@@ -55,19 +46,12 @@ import StreakCard from './components/StreakCard.vue'
   flex-wrap: wrap;
 }
 
-.calendar { 
-  width: 50%;
-  flex: 1;
-}
+
 .ticktick { 
   width: 50%;
   flex: 1;
 }
-.chart { 
-  width: 50%;
-  flex: 1;
-}
-.streak-card {
+.total-test {
   width: 50%;
   flex: 1;
 }
