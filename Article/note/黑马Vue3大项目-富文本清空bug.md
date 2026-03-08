@@ -4,9 +4,9 @@ date: 2026-03-05
 tags:
   - Vue3
   - Element Plus
-  - Quill
-  - 前端开发
-description: 解决 @vueup/vue-quill 富文本编辑器在 Vue3 项目中无法正确清空内容的问题，并总结几种稳定的解决方案。
+description:
+  解决 @vueup/vue-quill 富文本编辑器在 Vue3
+  项目中无法正确清空内容的问题，并总结几种稳定的解决方案。
 ---
 
 # Vue3 + Quill 富文本编辑器内容无法清空问题解决
@@ -194,12 +194,12 @@ const resetEditor = async () => {
 
 # 六、完整总结
 
-| 方案 | 稳定性 | 推荐 |
-|-----|------|------|
-| 仅清空 `formModel.content` | ❌ 不稳定 | 不推荐 |
-| `setHTML('')` | ✅ 稳定 | 推荐 |
-| `nextTick + setHTML` | ⭐ 最稳定 | 强烈推荐 |
-| `v-if 销毁重建编辑器` | ⭐⭐⭐ | 企业项目常用 |
+| 方案                       | 稳定性    | 推荐         |
+| -------------------------- | --------- | ------------ |
+| 仅清空 `formModel.content` | ❌ 不稳定 | 不推荐       |
+| `setHTML('')`              | ✅ 稳定   | 推荐         |
+| `nextTick + setHTML`       | ⭐ 最稳定 | 强烈推荐     |
+| `v-if 销毁重建编辑器`      | ⭐⭐⭐    | 企业项目常用 |
 
 ---
 
