@@ -2,13 +2,14 @@
 title: 03移动web
 date: 2026-03-02
 tags:
-  - 日常
-  - 技术体验
+  - 移动web
 categories:
   - 学习笔记
 ---
 
-## 平面转换(2D转换)-transform  
+# 03移动web
+
+## 平面转换(2D转换)-transform
 
 - 如果又要居中又要缩放,这两个值放在一起
 - 为元素添加动态效果,一般与过渡transition配合使用
@@ -29,28 +30,28 @@ categories:
       /* background-color: black; */
       margin: 100px auto;
       border: 1px solid #000;
-      
+
     }
-    
+
     .son{
       width: 200px;
       height: 100px;
       background-color: pink;
-      
+
       /* 儿子要设置transition */
       /* 画面过渡 */
       transition: all 0.5s;
     }
-    
+
     /* 鼠标放入到父盒子,son改变位置 */
     .father:hover .son{
       /* transform: translate(200px,100px); */
-      
+
       /* 百分比:参照盒子自身尺寸计算 */
       transform: translate(50%,100%);
     }
-    
-    
+
+
   </style>
   ```
 
@@ -66,7 +67,7 @@ categories:
 - 缩放 -- transform:scale(缩放倍数)/transform:scale(X轴缩放倍数,Y轴缩放倍数)
 - 倾斜 -- transform:skew(倾斜角度deg)
 
-***
+---
 
 ## 背景图background-image
 
@@ -83,7 +84,7 @@ categories:
 
 ```html
 <style>
-  .box{
+  .box {
     margin: 100px auto;
     width: 50px;
     height: 200px;
@@ -91,7 +92,7 @@ categories:
     transition: all 1s;
     /* background-image: linear-gradient(red yellow); */
     background-image: linear-gradient(red, yellow, blue);
-    
+
     /*  渐变方向,颜色1 终点位置,颜色2 终点位置 */
     background-image: linear-gradient(red 10px, yellow 20px, blue 30px);
   }
@@ -106,12 +107,12 @@ categories:
   - 颜色1 终点位置,
   - 颜色2 终点位置
 
-***
+---
 
 ## 空间转换(3D转换)-transform
 
 - 空间:z轴位置与视线方向相同  
-![空间](img/空间.png)  
+  ![空间](img/空间.png)
 
 ### 平移translate3d
 
@@ -134,7 +135,7 @@ categories:
   - 沿着X轴旋转
 - transform:rotateY(值)
   - 沿着Y轴旋转
-- rotate3d(x,y,z,角度度数) :用来设置自定义旋转轴的位置及旋转角度  
+- rotate3d(x,y,z,角度度数) :用来设置自定义旋转轴的位置及旋转角度
   - x,y,z取值为0-1之间的数字
 - 左手法则 -- 根据旋转方向确定取值正负
   - 左手握住旋转轴,拇指指向正值方向,其他四个手指弯曲方向为旋转正值方向
@@ -142,12 +143,11 @@ categories:
   - 设置元素的子元素是位于3D空间还是平面中
   - 属性值:flat:子级处于平面中/preserve-3d:子级处于3D空间
   - 步骤:1.父元素添加,transform-style:preserve-3D;2.子级定位;3.调整子盒子的位置(位移或旋转)
-- 案例-3D导航
-![3D导航](img/案例-3D导航.png)  
+- 案例-3D导航 ![3D导航](img/案例-3D导航.png)
 - 缩放 -- scale
   - transform:scale3d(x,y,z)
 
-***
+---
 
 ## 动画animation
 
@@ -155,35 +155,36 @@ categories:
 
 ```html
 <style>
-  .box{
+  .box {
     position: relative;
     margin: 100px auto;
     width: 140px;
     height: 140px;
     /* background-color: pink; */
     overflow: hidden;
-    
+
     /* border: 1px solid black; */
-    
+
     background-image: url(../../img/donghuatu.png);
     animation:
       run 1s steps(12) infinite,
-      move 5s forwards
-      ;
-    
+      move 5s forwards;
   }
-  
+
   /* 当动画的开始状态样式跟盒子默认样式相同,可以省略动画开始状态 */
   @keyframes run {
     /* from{background-position: 0 0;} */
-    to{background-position: -1680px 0;}
+    to {
+      background-position: -1680px 0;
+    }
   }
-  
+
   @keyframes move {
     /* 0%{transform: translate(0);} */
-    100%{transform: translate(800px);}
+    100% {
+      transform: translate(800px);
+    }
   }
-    
 </style>
 ```
 
@@ -191,49 +192,48 @@ categories:
 
 - animation:动画名称 动画时长 速度曲线 延迟时间 重复次数 动画方向 执行完毕时状态;
 
-|属性|作用|取值|
-|:---:|:---:|:---:|
-|animation-name|动画名称||
-|animation-duration|动画时长||
-|animation-delay|延迟时间||
-|animation-fill-mode|动画执行完毕时状态|forwards:最后一帧状态</br>backwards:第一帧动画|
-|animation-timing-function|速度曲线|steps(数字):逐帧动画+精灵图|
-|animation-iteration-count|重复次数|infinite为无限循环|
-|animation-direction|动画执行方向|alternate为反向|
-|animation-play-state|暂停动画|paused为暂停,通常配合:hover使用|
+|           属性            |        作用        |                      取值                      |
+| :-----------------------: | :----------------: | :--------------------------------------------: |
+|      animation-name       |      动画名称      |                                                |
+|    animation-duration     |      动画时长      |                                                |
+|      animation-delay      |      延迟时间      |                                                |
+|    animation-fill-mode    | 动画执行完毕时状态 | forwards:最后一帧状态</br>backwards:第一帧动画 |
+| animation-timing-function |      速度曲线      |          steps(数字):逐帧动画+精灵图           |
+| animation-iteration-count |      重复次数      |               infinite为无限循环               |
+|    animation-direction    |    动画执行方向    |                alternate为反向                 |
+|   animation-play-state    |      暂停动画      |        paused为暂停,通常配合:hover使用         |
 
-- 速度曲线 :linear匀速运动 /steps:分步动画  将动画分为5步  配合精灵图使用,实现精灵动画
+- 速度曲线 :linear匀速运动 /steps:分步动画 将动画分为5步 配合精灵图使用,实现精灵动画
   > 动画名称和动画时长必须赋值  
   > 取值不分延后顺序  
   > 如果有两个时间值,第一个时间表示动画时长,第二个时间表示延迟时间
 
 ```css
-.box{
+.box {
   width: 200px;
   height: 100px;
   background-color: pink;
   /* animation: one 1s; */
-  
+
   /* animation:动画名称 动画时长 速度曲线 延迟时间 重复次数 动画方向 执行完毕时状态; */
   /* linear匀速运动 */
   /* animation: one 2s linear; */
-  
+
   /* steps:分步动画  将动画分为5步  配合精灵图使用,实现精灵动画*/
   /* animation: one 5s steps(5); */
-  
+
   /* 如果有两个时间值,第一个时间表示动画时长,第二个时间表示延迟时间 */
   /* animation: one 2s 2s; */
-  
+
   /* 重复次数,infinite:无限循环 */
   /* animation: one 2s 3; */
   /* animation: one 2s infinite; */
-  
+
   /* 运动方向, alternate反向*/
   /* animation: one 2s infinite alternate; */
-  
+
   /*  执行完毕时状态; forwards结束状态;backwards开始状态(默认)*/
   /* animation: one 2s forwards; */
-  
 }
 ```
 
@@ -243,33 +243,30 @@ categories:
 
   ```html
   <style>
-    div{
+    div {
       width: 100px;
       height: 100px;
       background-color: pink;
-      
+
       /* 动画时间 5s ; infinite 重复 ; alternate 来来回回*/
       animation: change 5s infinite alternate;
     }
-    
+
     /* @keyframes 动画名称*/
     /* 百分比:表示的意思是动画时长的百分比 */
     @keyframes change {
       0% {
         transform: translate(0);
       }
-      
-      50%{
+
+      50% {
         transform: rotate(180deg);
       }
-      
+
       100% {
         transform: translate(600px);
       }
-      
-      
     }
-    
   </style>
   ```
 
@@ -289,7 +286,7 @@ categories:
 - 缩放150%:1920/150%;1080/150%
 - 硬件分辨率 → 物理分辨率(出厂设置)
 - 缩放调节的分辨率 → 逻辑分辨率(软件/驱动设置)
-- iPhone6/7/8 物理分辨率750 * 1334;逻辑分辨率375 \* 667 比例关系2:1
+- iPhone6/7/8 物理分辨率750 \* 1334;逻辑分辨率375 \* 667 比例关系2:1
 
 ### 视口
 
@@ -297,10 +294,10 @@ categories:
 
 ```html
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
 
   <!-- 视口标签 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
 </head>
 ```
@@ -321,7 +318,7 @@ categories:
 - rem
 - vw
 
-***
+---
 
 ## rem单位
 
@@ -340,67 +337,63 @@ categories:
 ```html
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .box {
-      width: 5rem;
-      height: 3rem;
-      background-color: pink;
-    }
-  </style>
-</head>
-<body>
-  <div class="box">
-
-    <script src="flexible.js"></script>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 5rem;
+        height: 3rem;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <script src="flexible.js"></script>
+    </div>
+  </body>
 </html>
 ```
-  
+
 ### rem:移动适配
 
 - 计算68px是多少个rem?(设计稿适配375px视口)
-- n*37.5=68
+- n\*37.5=68
 - 得到n,也就是rem单位的尺寸
 
 ```html
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    /* 68*29的盒子 */
-    .box{
-      width: 1.813rem;
-      height:0.7733rem;
-      background-color: pink;
-    }
-    
-    /* 可以不用引入.js文件，直接利用vw来设置 */
-    /* html{
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 68*29的盒子 */
+      .box {
+        width: 1.813rem;
+        height: 0.7733rem;
+        background-color: pink;
+      }
+
+      /* 可以不用引入.js文件，直接利用vw来设置 */
+      /* html{
       font-size: 10vw;
     }
       */
-
-    
-  </style>
-</head>
-<body>
-  <div class="box">
-    
-    <script src="flexible.js"></script>
-  </div>
-</body>
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <script src="flexible.js"></script>
+    </div>
+  </body>
 </html>
 ```
 
-***
+---
 
 ## less
 
@@ -410,7 +403,7 @@ categories:
 - vscode插件: eady less,保存less文件后自动生成对应的css文件
 - 注释:
   - 单行注释 → //注释内容(快捷键:ctrl+/)
-  - 块注释 → /*注释内容\*/(快捷键:shift+alt+a)
+  - 块注释 → /\*注释内容\*/(快捷键:shift+alt+a)
 
 ### less - 运算
 
@@ -424,26 +417,24 @@ categories:
 - 快速生成后代选择器
 
   ```less
-  .father{
-      width: 400px;
-      height: 400px;
-      background: #ccc;
-      .child{
-          width: 200px;
-          height: 200px;
-          background: orange;
-          a{
-              color: red;
-              font-size: 20px;
+  .father {
+    width: 400px;
+    height: 400px;
+    background: #ccc;
+    .child {
+      width: 200px;
+      height: 200px;
+      background: orange;
+      a {
+        color: red;
+        font-size: 20px;
 
-              // &表示当前选择器,代码写到谁的大括号里面就表示谁 → 不会生成后代选择器
-              &:hover{
-                  background: yellow;
-              }
-          }
-
-
+        // &表示当前选择器,代码写到谁的大括号里面就表示谁 → 不会生成后代选择器
+        &:hover {
+          background: yellow;
+        }
       }
+    }
   }
   ```
 
@@ -456,20 +447,20 @@ categories:
   - 使用变量：css属性：@变量名
 
 ```less
-  //定义变量
-  @mycolor：blue;
+//定义变量
+@mycolor：blue;
 
-  //使用变量
-  .box {
-    width: 200px;
-    height: 200px;
-    background: @mycolor;
-  }
+//使用变量
+.box {
+  width: 200px;
+  height: 200px;
+  background: @mycolor;
+}
 
-  a{
-      color: @mycolor;
-  }
-  ```
+a {
+  color: @mycolor;
+}
+```
 
 ### less - 导入
 
@@ -477,20 +468,19 @@ categories:
 - 语法：导入@import"文件路径";
 - 提示:如果是less文件可以省略后缀
 
-  > @import  './base.less';
-  > @import './base';
+  > @import './base.less'; @import './base';
 
 ### less - 导出
 
 - 写法:在less文件的第一行添加 // out:存储URL
 - 提示:文件夹后面添加
 
-  > // out: ./index.css    导出当前文件并且取名为index.css名字
-  > //out: ./css/      导出到某个文件中
+  > // out: ./index.css 导出当前文件并且取名为index.css名字 //out:
+  > ./css/ 导出到某个文件中
 
 ### less - 禁止导出
 
-- 写法:在less文件第一行添加 :  `//out:false`
+- 写法:在less文件第一行添加 : `//out:false`
 - 就不会生成对应的css文件
 
 ### less直接导入
@@ -498,13 +488,13 @@ categories:
 ```html
 <link rel="stylesheet/less" type="text/css" href="./less/index.less" />
 <!-- href后面改成自己用的文件名 -->
-  
+
 <!-- 把less直接变为css，不需要less，变成css再导入less -->
 <!-- 因为这个过程慢，而hx检测到文件改变比较快，所以需要你每次改了less，还需要刷新一下才能看到效果 -->
 <script src="https://cdn.jsdelivr.net/npm/less@4.1.3/dist/less.min.js"></script>
 ```
 
-***
+---
 
 ## 单位
 
@@ -512,7 +502,8 @@ categories:
 
 - 绝对单位
 - 定义：最基础的尺寸单位，代表屏幕上的一个「逻辑像素点」（注意：不是物理像素，Retina 屏等高清屏会用多个物理像素显示 1 个逻辑像素）。
-- 核心特点：尺寸固定不变，不受屏幕大小、根元素字体等因素影响。比如设置 width: 100px，无论在手机还是电脑上，这个元素的逻辑宽度都是 100px（视觉上的大小会随屏幕分辨率变化，但数值固定）。
+- 核心特点：尺寸固定不变，不受屏幕大小、根元素字体等因素影响。比如设置 width:
+  100px，无论在手机还是电脑上，这个元素的逻辑宽度都是 100px（视觉上的大小会随屏幕分辨率变化，但数值固定）。
 
 ### vw（视口宽度单位）
 
@@ -527,16 +518,18 @@ categories:
 
 - 相对单位（基于根元素）
 - 定义：1rem = HTML 根元素（`<html>` 标签）的 font-size 取值。
-- 核心特点：尺寸随根元素字体大小变化，默认情况下浏览器的 `<html>` 字体大小是 16px，所以默认 1rem = 16px。
-- 比如你设置 html { font-size: 20px; }，那么 1rem = 20px，5rem = 100px；如果修改 html { font-size: 25px; }，5rem 就变成了 125px。
+- 核心特点：尺寸随根元素字体大小变化，默认情况下浏览器的 `<html>`
+  字体大小是 16px，所以默认 1rem = 16px。
+- 比如你设置 html { font-size: 20px; }，那么 1rem = 20px，5rem =
+  100px；如果修改 html { font-size: 25px; }，5rem 就变成了 125px。
 
-| 单位 |     参考基准     | 类型 | 转换示例（视口宽 1000px，html font-size=16px） |
+| 单位 |     参考基准      | 类型 | 转换示例（视口宽 1000px，html font-size=16px） |
 | :--: | :---------------: | :--: | :--------------------------------------------: |
-|  px  |   固定逻辑像素   | 绝对 |             无转换，100px = 100px             |
-|  vw  |   视口宽度的 1%   | 相对 |       10vw = 1000px × 1% × 10 = 100px       |
-| rem | html 的 font-size | 相对 |         6.25rem = 16px × 6.25 = 100px         |
+|  px  |   固定逻辑像素    | 绝对 |             无转换，100px = 100px              |
+|  vw  |   视口宽度的 1%   | 相对 |        10vw = 1000px × 1% × 10 = 100px         |
+| rem  | html 的 font-size | 相对 |         6.25rem = 16px × 6.25 = 100px          |
 
-***
+---
 
 ## 媒体查询
 
@@ -548,18 +541,20 @@ categories:
 
   ```html
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <style>
       /* 视口宽度是375px,网页背景色是绿色 */
       /* 媒体查询一般不写绝对尺寸, 一般写大于那个尺寸或者小于哪个尺寸*/
-      @media (width:375px) {
-        body{
+      @media (width: 375px) {
+        body {
           background-color: green;
         }
       }
-
     </style>
   </head>
   ```
@@ -585,8 +580,8 @@ categories:
 - 完整写法:`<link rel="stylesheet" media="逻辑符 媒体类型 and (媒体特性)" href="xx.css" />`
 
 ```html
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Document</title>
 <!-- 视口宽度小于等于768px,网页背景是绿色 -->
 <link rel="stylesheet" media="(max-width:768px)" href="./pink.css" />
@@ -595,7 +590,7 @@ categories:
 <link rel="stylesheet" media="(min-width:1200px)" href="./green.css" />
 ```
 
-***
+---
 
 ## bootstrap
 
@@ -606,32 +601,35 @@ categories:
 
 ### 使用步骤
 
-  1.引入Bootstrap CSS文件
+1.引入Bootstrap CSS文件
 
-  ```html
-  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
-  ```
+```html
+<link
+  href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha1/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+```
 
-  2.调用类名: container:响应式布局版心
+2.调用类名: container:响应式布局版心
 
-   ```html
-   <div class = "container"> 测试 </div>
-   ```
+```html
+<div class="container">测试</div>
+```
 
 ### 栅格系统
 
 - 栅格化是指将整个网页的宽度分成12等份,每个盒子占用对应的份数
   - 例如:一行排4个盒子,则每个盒子占3份即可(12 / 4 = 3)
   - 常用布局类:
-    - col-*-*:列 (例如:col-xxl-3)
+    - col-_-_:列 (例如:col-xxl-3)
     - row:行
 
-    ||Extra small|Small|Medium|Large|Extra large|Extra extra large|
-    |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-    ||xs|sm|md|lg|xl|xxl|
-    ||<576px|>= 576px|>=768px|>=992px|>=1200px|>=1400px|
-    |container (max-width)|None(auto)|540px|720px|960px|1140px|1320px|
-    |clss preflx|col-|col-se-|col-md-|col-lg-|col-xl-|col-xxl-|
+    |                       | Extra small |  Small   | Medium  |  Large  | Extra large | Extra extra large |
+    | :-------------------: | :---------: | :------: | :-----: | :-----: | :---------: | :---------------: |
+    |                       |     xs      |    sm    |   md    |   lg    |     xl      |        xxl        |
+    |                       |   <576px    | >= 576px | >=768px | >=992px |  >=1200px   |     >=1400px      |
+    | container (max-width) | None(auto)  |  540px   |  720px  |  960px  |   1140px    |      1320px       |
+    |      clss preflx      |    col-     | col-se-  | col-md- | col-lg- |   col-xl-   |     col-xxl-      |
 
   ```html
   <body>
@@ -651,7 +649,6 @@ categories:
         <div class="col-xl-3 col-md-6 col-sm-12">5</div>
       </div>
     </div>
-    
   </body>
   ```
 
@@ -664,8 +661,7 @@ categories:
 - btn-success:成功
 - btn-warning:警告
 - .....
-- 按钮尺寸:btn-lg/btn-sm
-![button类](img/button类.jpg)
+- 按钮尺寸:btn-lg/btn-sm ![button类](img/button类.jpg)
 
 ```html
 <body>
@@ -674,31 +670,32 @@ categories:
   <button class=" btn btn-success btn-sm">小按钮成功</button>
   <button class=" btn btn-warning btn-lg">按钮大警告</button>
 </body>
-  ```
-  
+```
+
 #### 表格类
 
 - 需要调用多类名 叠加
 - table:默认样式
 - table-striped:隔行变色
-- table-success:表格颜色
-![表格](img/表格类.jpg)
+- table-success:表格颜色 ![表格](img/表格类.jpg)
 
 ```html
 <table class="table table-striped ">
-  <tr class="table-success">
+  <tr class="table-success"></tr>
+</table>
 ```
-  
+
 #### 组件:components
 
-- 第一步:引入样式表[中文文档](<https://v5.bootcss.com/docs/getting-started/introduction/>)
+- 第一步:引入样式表[中文文档](https://v5.bootcss.com/docs/getting-started/introduction/)
 - 第二步:引入js文件(有动态功能的需要引入)
 - 第三步:复制结构,修改内容
 
 #### 字体图标
 
 - 只需要调用一个类名
-- 下载:导航/Extend:图标库 → 安装 → 下载安装包 → [bootstrap-icons-1.x.x.zip](https://icons.getbootstrap.com/)
+- 下载:导航/Extend:图标库 → 安装 → 下载安装包 →
+  [bootstrap-icons-1.x.x.zip](https://icons.getbootstrap.com/)
 - 使用:
   1. 复制fonts文件夹到项目目录
   2. 网页引入bootstrap-icons.css文件
@@ -710,67 +707,69 @@ categories:
 
   ```html
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <title>Document</title>
 
     <link rel="stylesheet" href="./Bootstrap/font/bootstrap-icons.css" />
-    
+
     <style>
-      
       /* 图标放大  改颜色*/
-      .bi-android2{
+      .bi-android2 {
         font-size: 100px;
         color: green;
       }
-      
     </style>
-    
   </head>
   <body>
-    <span class = "bi-android2"></span>
-    
-    
+    <span class="bi-android2"></span>
   </body>
   ```
-  
+
 #### Font Awesome 图标
 
 - 和上面字体图标使用方法一样
 - 要使用 Font Awesome 图标，请在 HTML 页面的 `<head>`部分中添加以下行：  
-1、国内推荐 CDN：
+  1、国内推荐 CDN：
 
   ```html
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
   ```
 
-2、海外推荐 CDN:  
+2、海外推荐 CDN:
 
-  ```html
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  ```
+```html
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+```
 
 ### Bootstrap弹框
 
 - 功能:不离开当前页面,显示单独内容,供用户操作
 - [Modal弹框/模态](https://v5.bootcss.com/docs/5.3/components/modal/#how-it-works)
 
-1. 引入css `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">`
-2. 引入js `<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>`
+1. 引入css
+   `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">`
+2. 引入js
+   `<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>`
 
 #### 通过属性控制
 
 - 自定义属性,控制弹框的显示和隐藏
 
 ```html
-  <button data-bs-toggle="modal" data-bs-target="css选择器">
-    显示弹框
-  </button>
+<button data-bs-toggle="modal" data-bs-target="css选择器">显示弹框</button>
 
-    <button data-bs-dismiss="modal" >
-    关闭弹框
-  </button>
+<button data-bs-dismiss="modal">关闭弹框</button>
 ```
 
 - 应用
@@ -780,7 +779,7 @@ categories:
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- 
+  <!--
     目标：使用Bootstrap弹框
     1. 引入bootstrap.css 和 bootstrap.js
     2. 准备弹框标签，确认结构
@@ -789,7 +788,7 @@ categories:
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".my-box">
     显示弹框
   </button>
-  <!-- 
+  <!--
     弹框标签
     bootstrap的modal弹框，添加modal类名（默认隐藏）
    -->
@@ -826,21 +825,21 @@ categories:
 - 语法
 
 ```js
-    //创建弹框对象
-    const modalDom = document.querySelector('css选择器')
+//创建弹框对象
+const modalDom = document.querySelector('css选择器')
 
-    // backdrop: 'static' → 点击外部遮罩不关闭弹框
-    // keyboard: false → 可选，禁用ESC键关闭弹框（如需保留ESC关闭可删除此配置）
-    const modal = new bootstrap.Modal(modalDom, {
-      backdrop: 'static',
-      keyboard: false
-    })
+// backdrop: 'static' → 点击外部遮罩不关闭弹框
+// keyboard: false → 可选，禁用ESC键关闭弹框（如需保留ESC关闭可删除此配置）
+const modal = new bootstrap.Modal(modalDom, {
+  backdrop: 'static',
+  keyboard: false
+})
 
-    //显示弹框
-    modal.show()
+//显示弹框
+modal.show()
 
-    //隐藏弹框
-    modal.hide()
+//隐藏弹框
+modal.hide()
 ```
 
 - 应用
@@ -851,7 +850,7 @@ categories:
 </head>
 
 <body>
-  <!-- 
+  <!--
     目标：使用JS控制弹框，显示和隐藏
     1. 创建弹框对象
     2. 调用弹框对象内置方法

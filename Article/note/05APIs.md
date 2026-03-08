@@ -2,44 +2,42 @@
 title: 05APIs
 date: 2026-03-02
 tags:
-  - 日常
-  - 技术体验
+  - apis
 categories:
   - 学习笔记
 ---
+
+# 05APIs
 
 ## Web API基本认知
 
 ### API作用和分类
 
 - 作用:使用js去操作html和浏览器
-- 分类:DOM(文档对象模型),BOM(浏览器对象模型)
-  ![js](img/js.jpg)
+- 分类:DOM(文档对象模型),BOM(浏览器对象模型) ![js](img/js.jpg)
 - DOM(文档对象模型)
-
   - 用来操作网页内容的功能
   - 作用:开发网页内容特效和实现用户交互
   - 把网页当作对象处理
-- DOM树
 
+- DOM树
   - 将HTML文档以树状结构直观的表现出来,文档树或DOM树
   - 描述网页内容关系的名词
-  - 作用:文档树直观的体现了标签与标签之间的关系
-    ![DOM树](img/DOM树.jpg)
-- DOM对象
+  - 作用:文档树直观的体现了标签与标签之间的关系 ![DOM树](img/DOM树.jpg)
 
+- DOM对象
   - 浏览器根基html标签生成JS对象
   - 所有的标签都可以在这个对象上面找到
   - 修改这个对象的属性会自动映射到标签身上
 
   ```html
-   <body>
-  <div>123</div>
-  <script>
-   const div = document.querySelector('div')
-   // 打印对象
-   console.dir(div); //dom对象
-  </script>
+  <body>
+    <div>123</div>
+    <script>
+      const div = document.querySelector('div')
+      // 打印对象
+      console.dir(div) //dom对象
+    </script>
   </body>
   ```
 
@@ -47,7 +45,6 @@ categories:
     - 是DOM里提供的一个对象
     - 所以它提供的属性和方法都是用来访问和操作网页内容的
       > document.write()
-      >
     - 网页所有的内容都在document里面
 
 ---
@@ -58,20 +55,20 @@ categories:
 
 ### 选择匹配第一个元素d.q
 
-- 语法:``document.querySelector('css选择器')``
+- 语法:`document.querySelector('css选择器')`
 - 参数:包含一个或多个有效的CSS选择器字符串
 - 返回值:CSS选择器匹配的第一个元素,一个HTML Element对象
 
 ```html
 <body>
-<div class="box">123</div>
-<div class="box">abc</div>
-<script>
-const div = document.querySelector('div:nth-child(2)')
-const box = document.querySelector('.box')
-console.dir(div);
-// dir就是对象形式
-</script>
+  <div class="box">123</div>
+  <div class="box">abc</div>
+  <script>
+    const div = document.querySelector('div:nth-child(2)')
+    const box = document.querySelector('.box')
+    console.dir(div)
+    // dir就是对象形式
+  </script>
 </body>
 ```
 
@@ -109,16 +106,16 @@ document.getElementsByClassName('w')
 - 显示纯文本,不解析标签
 
   ```html
-   <body>
-   <div class="box">我是文字内容</div>
-   <script>
-    //1.获取元素
-    const box = document.querySelector('.box')
-    // 2.修改文字内容,对象.innerText属性
-    console.log(box.innerText)
-    box.innerText = '我是一个盒子'
-    box.innerHTML = '<b>我是</b>'
-   </script>
+  <body>
+    <div class="box">我是文字内容</div>
+    <script>
+      //1.获取元素
+      const box = document.querySelector('.box')
+      // 2.修改文字内容,对象.innerText属性
+      console.log(box.innerText)
+      box.innerText = '我是一个盒子'
+      box.innerHTML = '<b>我是</b>'
+    </script>
   </body>
   ```
 
@@ -135,18 +132,17 @@ document.getElementsByClassName('w')
 
 - 通过js设置/修改标签元素属性，比如通过src换照片
 - 最常见的属性比如：href，title，src等
-- 语法：``对象.属性 = 值``
+- 语法：`对象.属性 = 值`
 
 ```html
 <body>
-  <img src="./素材/images/1.webp" alt="">
+  <img src="./素材/images/1.webp" alt="" />
 </body>
 <script>
   //1.获取图片元素
   const img = document.querySelector('img')
   //2.修改图片对象属性
   img.src = './素材/images/2.webp'
-
 </script>
 ```
 
@@ -163,7 +159,6 @@ document.getElementsByClassName('w')
   // 2.修改样式属性,对象.style.样式属性='值',别忘了单位
   box.style.width = '500px'
   box.style.backgroundColor = 'green' //有-的,用小驼峰
-
 </script>
 ```
 
@@ -206,7 +201,6 @@ document.getElementsByClassName('w')
 ### 操作类名(classList)操作CSS
 
 - 解决className容易覆盖以前的类名，我们通过classList方式追加和删除类名
-
   - 语法
 
   ```txt
@@ -225,18 +219,12 @@ document.getElementsByClassName('w')
 
   ```js
   <script>
-    // 1.获取元素
-    const box = document.querySelector('.box')
-    // 2.追加一个类名 add()类名不加点,并且是字符串
-    box.classList.add('active')
-    // 3.移除一个类名 remove()类名不加点,并且是字符串
-    box.classList.remove('box')
-    // 4.切换类名 toggle() 有还是没有,有就移除,没有就添加
-    box.classList.toggle('move')
-
-    // 可以直接连写
-    document.querySelector('.box').classList.add('active')
-    </script>
+    // 1.获取元素 const box = document.querySelector('.box') // 2.追加一个类名
+    add()类名不加点,并且是字符串 box.classList.add('active') // 3.移除一个类名
+    remove()类名不加点,并且是字符串 box.classList.remove('box') // 4.切换类名
+    toggle() 有还是没有,有就移除,没有就添加 box.classList.toggle('move') //
+    可以直接连写 document.querySelector('.box').classList.add('active')
+  </script>
   ```
 
 ### 操作表单元素属性
@@ -246,29 +234,29 @@ document.getElementsByClassName('w')
 - 属性:(只接受布尔值的)checked,disabled
 
 ```html
-  <body>
-    <input type="text" name="" id="" value="电脑">
+<body>
+  <input type="text" name="" id="" value="电脑" />
 
-    <script>
-      // 1.获取元素
-      const input = document.querySelector('input');
-      // 2.修改value属性
-      input.value = '手机';
-    </script>
-  </body>
+  <script>
+    // 1.获取元素
+    const input = document.querySelector('input')
+    // 2.修改value属性
+    input.value = '手机'
+  </script>
+</body>
 ```
 
 ```html
 <body>
-    <input type="checkbox" name="" id="" value="nihao">
-    <button>按钮</button>
-    <script>
-      const input = document.querySelector('input');
-      input.checked = true;
-  
-      const button = document.querySelector('button');
-      button.disabled = false; //默认是false,不禁用
-    </script>
+  <input type="checkbox" name="" id="" value="nihao" />
+  <button>按钮</button>
+  <script>
+    const input = document.querySelector('input')
+    input.checked = true
+
+    const button = document.querySelector('button')
+    button.disabled = false //默认是false,不禁用
+  </script>
 </body>
 ```
 
@@ -286,14 +274,13 @@ document.getElementsByClassName('w')
 - 自定义属性
 
   ```html
-    <body>
-      <div data-id='0'>你好</div>
-      <script>
-        const div = document.querySelector('div')
-        console.log(div.dataset.id)
-
-      </script>
-    </body>
+  <body>
+    <div data-id="0">你好</div>
+    <script>
+      const div = document.querySelector('div')
+      console.log(div.dataset.id)
+    </script>
+  </body>
   ```
 
   ```html
@@ -301,9 +288,9 @@ document.getElementsByClassName('w')
     <div class="box" data-id="123">盒子</div>
 
     <script>
-      const div = document.querySelector('div');
-      console.log(div.dataset.id); // 获取自定义属性的值
-      div.dataset.id = '456'; // 修改自定义属性的值
+      const div = document.querySelector('div')
+      console.log(div.dataset.id) // 获取自定义属性的值
+      div.dataset.id = '456' // 修改自定义属性的值
     </script>
   </body>
   ```
@@ -368,16 +355,16 @@ document.getElementsByClassName('w')
   ```html
   <body>
     <script>
-    // 方法一
-    setInterval(function () {
-      document.write('nihao<br>');
-    }, 1000);
+      // 方法一
+      setInterval(function () {
+        document.write('nihao<br>')
+      }, 1000)
 
-    //方法二
-    function writeHello() {
-      console.log('nihao');
-    }
-    setInterval(writeHello, 1000);
+      //方法二
+      function writeHello() {
+        console.log('nihao')
+      }
+      setInterval(writeHello, 1000)
     </script>
   </body>
   ```
@@ -390,12 +377,12 @@ document.getElementsByClassName('w')
 ```
 
 ```js
-  function writeHello() {
-      console.log('nihao');
-    }
-    let a = setInterval(writeHello, 1000);
-    // 停止间歇函数
-    clearInterval(a);
+function writeHello() {
+  console.log('nihao')
+}
+let a = setInterval(writeHello, 1000)
+// 停止间歇函数
+clearInterval(a)
 ```
 
 ---
@@ -418,7 +405,6 @@ document.getElementsByClassName('w')
 ```
 
 - 事件监听三要素
-
   - 事件源:那个dom元素被事件触发了,要获取dom元素
   - 事件类型:用什么方式触发,比如鼠标单击click,鼠标经过mouseover等
   - 事件调用的函数:要做什么事
@@ -432,7 +418,6 @@ document.getElementsByClassName('w')
 
       btn.addEventListener('click', function () {
         alert('点击了')
-
       })
     </script>
   </body>
@@ -447,38 +432,37 @@ document.getElementsByClassName('w')
 
 #### DOM L2
 
-- 事件源.addEventListener(事件,事件处理函数)
-  -区别:on方式会被覆盖,addEventListener方式可绑定多次,拥有事件更多特性,推荐使用
+- 事件源.addEventListener(事件,事件处理函数) -区别:on方式会被覆盖,addEventListener方式可绑定多次,拥有事件更多特性,推荐使用
 
 ```html
-  <body>
-    <button onclick="alert('11')">按钮</button> //行内js
-    <script>
-        const btn = document.querySelector('button')
-        btn.onclick = function () {
-            alert('22')  
-        }  //会覆盖
+<body>
+  <button onclick="alert('11')">按钮</button>
+  //行内js
+  <script>
+    const btn = document.querySelector('button')
+    btn.onclick = function () {
+      alert('22')
+    } //会覆盖
     // 这两种本质是一样的
-      </script>
-  </body>
+  </script>
+</body>
 ```
 
 #### 两种注册事件的区别
 
 - 传统on注册
-
   - 同一个对象,后面注册的事件会覆盖前面注册(同一个事件)
   - 直接使用null覆盖就可以实现事件的解绑
   - 都是冒泡阶段执行的
-- 事件监听注册
 
+- 事件监听注册
   - 语法:`addEventListener(事件类型,事情处理函数,是否使用捕获)`
   - 后面注册的事件不会覆盖前面注册的事件(同一个事件)
   - 可以通过第三个参数去确定是在冒泡阶段或者捕获阶段执行
   - 必须使用 `removeEventListener(事件类型,事情处理函数,获取捕获或则冒泡阶段)`
   - 匿名函数无法被解绑
 
-  ---
+  ***
 
 ## 事件类型
 
@@ -486,7 +470,6 @@ document.getElementsByClassName('w')
 
 - 鼠标点击输入框，获得焦点，开始输入，输入事件，输入完毕鼠标点外面，失去焦点
 - 鼠标事件:鼠标触发
-
   - click:鼠标点击
   - mouseenter:鼠标经过
   - mouseleave:鼠标离开
@@ -497,10 +480,10 @@ document.getElementsByClassName('w')
   ```html
   <body>
     <div class="box"></div>
-      <script>
+    <script>
       const div = document.querySelector('div')
       div.addEventListener('mouseenter', function () {
-          console.log('nihao')
+        console.log('nihao')
       })
     </script>
   </body>
@@ -519,16 +502,16 @@ document.getElementsByClassName('w')
 
 ```html
 <body>
-  <input type="text" name="" id="">
+  <input type="text" name="" id="" />
   <script>
-      let inp = document.querySelector('input')
-      inp.addEventListener('keydown', function (e) {
-          // let f = e
-          console.log(e) //判断输入的是那个键
-      })
+    let inp = document.querySelector('input')
+    inp.addEventListener('keydown', function (e) {
+      // let f = e
+      console.log(e) //判断输入的是那个键
+    })
 
-      inp.addEventListener('input', function () {
-        console.log(inp.value)  //打印输入框中的内容
+    inp.addEventListener('input', function () {
+      console.log(inp.value) //打印输入框中的内容
     })
   </script>
 </body>
@@ -541,7 +524,7 @@ document.getElementsByClassName('w')
 - ontimeupdate 事件在视频/音频(audio/video)当前的播放位置发送改变时触发 (触发频次太高了)
 - onloadeddata 事件在当前帧的数据加载完成且还没有足够的数据播放视频/音频(audio/video)的下一帧时触发
 
-  ---
+  ***
 
 ## 获取事件对象e
 
@@ -562,24 +545,22 @@ document.getElementsByClassName('w')
 
 ```html
 <body>
-  <input type="text">
+  <input type="text" />
   <script>
-      const inp = document.querySelector('input')
-      inp.addEventListener('keyup', function (e) {
-          // console.log(e.key)
-          if (e.key === 'Enter') {
-              console.log('我按下了回车键')
-          }
-      })
+    const inp = document.querySelector('input')
+    inp.addEventListener('keyup', function (e) {
+      // console.log(e.key)
+      if (e.key === 'Enter') {
+        console.log('我按下了回车键')
+      }
+    })
   </script>
 </body>
 ```
 
 ```js
 <script>
-    const str = '     ink   '
-    console.log(str.trim())
-    //去除字符串左右两边的空格
+  const str = ' ink ' console.log(str.trim()) //去除字符串左右两边的空格
 </script>
 ```
 
@@ -641,7 +622,7 @@ document.getElementsByClassName('w')
 
     const btn = document.querySelector('button')
     btn.addEventListener('click', function () {
-      console.log(this)  //打印的是当前选中的button标签 :<button>按钮</button>
+      console.log(this) //打印的是当前选中的button标签 :<button>按钮</button>
     })
   </script>
 </body>
@@ -666,18 +647,10 @@ btn.addEventListener('click', function () {
 <body>
   <button>按钮</button>
   <script>
-    function fn() {
-      console.log('我是回调函数.....')
-    }
-
-    //fn作为参数传递给了setInterval,fn就是回调函数
-    setInterval(fn, 1000)
-
-    const btn = document.querySelector('button')
-    btn.addEventListener('click', function () {
-      console.log('我也是回调函数.....')
-    })
-
+    function fn() {console.log('我是回调函数.....')}
+    //fn作为参数传递给了setInterval,fn就是回调函数 setInterval(fn, 1000) const
+    btn = document.querySelector('button') btn.addEventListener('click',
+    function () {console.log('我也是回调函数.....')})
   </script>
 </body>
 ```
@@ -710,8 +683,7 @@ btn.addEventListener('click', function () {
 ### 事件流与两个阶段说明
 
 - 事件流:事件完整执行过程中的流动路径
-- 捕获阶段是从父到子,冒泡阶段是从子到父
-  ![事件流](img/事件流.png)
+- 捕获阶段是从父到子,冒泡阶段是从子到父 ![事件流](img/事件流.png)
 
 ### 事件捕获
 
@@ -720,7 +692,7 @@ btn.addEventListener('click', function () {
 - 若是用L0事件(`事件源.on事件=function(){}`)监听,则只有冒泡阶段没有捕获
 
 ```js
-DOM.addEventListener(事件类型,事件处理函数,是否使用捕获机制)
+DOM.addEventListener(事件类型, 事件处理函数, 是否使用捕获机制)
 ```
 
 ```html
@@ -732,12 +704,20 @@ DOM.addEventListener(事件类型,事件处理函数,是否使用捕获机制)
     const a = document.querySelector('.boxa')
     const b = document.querySelector('.boxb')
 
-    a.addEventListener('click', function () {
-      console.log('大盒子');
-    }, true)
-    b.addEventListener('click', function () {
-      console.log('小盒子');
-    }, true)
+    a.addEventListener(
+      'click',
+      function () {
+        console.log('大盒子')
+      },
+      true
+    )
+    b.addEventListener(
+      'click',
+      function () {
+        console.log('小盒子')
+      },
+      true
+    )
     //先出来大盒子,再出来小盒子,也就是先出父元素,再出子元素
   </script>
 </body>
@@ -778,7 +758,7 @@ DOM.addEventListener(事件类型,事件处理函数,是否使用捕获机制)
 <body>
   <!-- form action = 是将表单提交到哪里 -->
   <form action="http://www.itcast.cn">
-    <input type="submit" name="" id="" value="免费注册">
+    <input type="submit" name="" id="" value="免费注册" />
   </form>
   <a href="http://www.baidu.com">百度</a>
   <script>
@@ -820,7 +800,7 @@ DOM.addEventListener(事件类型,事件处理函数,是否使用捕获机制)
 - addEventListener事件解绑(L2事件)
 
 ```html
-  <script>
+<script>
   const btn = document.querySelector('button')
   function fn() {
     alert('点击了')
@@ -839,36 +819,34 @@ DOM.addEventListener(事件类型,事件处理函数,是否使用捕获机制)
 
 - 优点:减少注册次数,可以提高程序性能
 - 原理:事件委托是利用事件冒泡的特点
-
   - 给父元素注册事件,当我们触发子元素的时候,就会冒泡到父元素身上,从而触发父元素的事件
 
   ```html
   <body>
-  <ul>
-    <li>第1个孩子</li>
-    <li>第2个孩子</li>
-    <li>第3个孩子</li>
-    <li>第4个孩子</li>
-    <li>第5个孩子</li>
-    <li>第6个孩子</li>
-    <p>不要变色</p>
-  </ul>
-  <script>
-    //点击每个小li,当前li文字变成红色
-    //按照委托的方式
-    //1.获取父级
-    const ul = document.querySelector('ul')
-    ul.addEventListener('click', function (e) {
-      // alert(11) //孩子元素因为冒泡,所有点击随便一个孩子都会弹出
-      // e.target//我们点击的对象
-      // e.target.style.color = 'red' //此时ul里面的每一个孩子都变色
+    <ul>
+      <li>第1个孩子</li>
+      <li>第2个孩子</li>
+      <li>第3个孩子</li>
+      <li>第4个孩子</li>
+      <li>第5个孩子</li>
+      <li>第6个孩子</li>
+      <p>不要变色</p>
+    </ul>
+    <script>
+      //点击每个小li,当前li文字变成红色
+      //按照委托的方式
+      //1.获取父级
+      const ul = document.querySelector('ul')
+      ul.addEventListener('click', function (e) {
+        // alert(11) //孩子元素因为冒泡,所有点击随便一个孩子都会弹出
+        // e.target//我们点击的对象
+        // e.target.style.color = 'red' //此时ul里面的每一个孩子都变色
 
-      //只要点击li才有效果
-      if (e.target.tagName === 'LI') {
-        e.target.style.color = 'red'
-      }
-    })
-
+        //只要点击li才有效果
+        if (e.target.tagName === 'LI') {
+          e.target.style.color = 'red'
+        }
+      })
     </script>
   </body>
   ```
@@ -877,12 +855,12 @@ DOM.addEventListener(事件类型,事件处理函数,是否使用捕获机制)
 
 ## 其他事件
 
-|                属性                | 作用                                      | 说明                                                           |
-| :--------------------------------: | :---------------------------------------- | :------------------------------------------------------------- |
-|   `scrollLeft`和 `scrollTop`   | 被卷去的头部和左侧值                      | 配合页面滚动 `scroll`来用,可读写                             |
+|              属性              | 作用                                      | 说明                                                       |
+| :----------------------------: | :---------------------------------------- | :--------------------------------------------------------- |
+|   `scrollLeft`和 `scrollTop`   | 被卷去的头部和左侧值                      | 配合页面滚动 `scroll`来用,可读写                           |
 | `clientWidth`和 `clientHeight` | 获得元素宽度和高度                        | 不包含 `border`,`margin`,滚动条用于js获取元素大小,只读属性 |
 | `offsetWidth`和 `offsetHeight` | 获得元素宽度和高度                        | 包含 `border`,`margin`,滚动条用于js获取元素大小,只读属性   |
-|   `offsetLeft`和 `offsetTop`   | 获取元素距离自己定位的父级元素的左,上距离 | 获取元素位置的时候使用,只读属性                                |
+|   `offsetLeft`和 `offsetTop`   | 获取元素距离自己定位的父级元素的左,上距离 | 获取元素位置的时候使用,只读属性                            |
 
 ### 页面加载事件
 
@@ -898,7 +876,7 @@ DOM.addEventListener(事件类型,事件处理函数,是否使用捕获机制)
 
 ```js
 //页面加载事件
-window.addEventListener('load',function(){
+window.addEventListener('load', function () {
   //执行操作
 })
 ```
@@ -938,7 +916,7 @@ window.addEventListener('load',function(){
 
 ```js
 //页面加载事件
-window.addEventListener('scroll',function(){
+window.addEventListener('scroll', function () {
   //执行操作
 })
 ```
@@ -946,41 +924,39 @@ window.addEventListener('scroll',function(){
 ```html
 <body>
   <div>
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-  Incidunt debitis quas amet facilis quisquam repudiandaeex. 
-  Impedit, nemo. Saepe, adipisci quae? 
-  Tempora sit aliquid eveniet porro delectus sequi molestiae non?
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt debitis
+    quas amet facilis quisquam repudiandaeex. Impedit, nemo. Saepe, adipisci
+    quae? Tempora sit aliquid eveniet porro delectus sequi molestiae non?
   </div>
 
-<script>
-  //页面滚动事件
-  const div = document.querySelector('div')
-  window.addEventListener('scroll', function () {
-    //当滑动页面的时候，控制台就会打印(我滚了!)
-    // console.log('我滚了！');
-    //找body的话是document.body
-    //找html的话是document.documentElement
-    // console.log(document.documentElement.scrollTop); //不带单位的数字型
+  <script>
+    //页面滚动事件
+    const div = document.querySelector('div')
+    window.addEventListener('scroll', function () {
+      //当滑动页面的时候，控制台就会打印(我滚了!)
+      // console.log('我滚了！');
+      //找body的话是document.body
+      //找html的话是document.documentElement
+      // console.log(document.documentElement.scrollTop); //不带单位的数字型
 
-    //给i赋值,获取当前页面向下滚动的高度
-    const i = document.documentElement.scrollTop
-    //当向下滚动100px的时候,显示div
-    // if (i >= 100) {
-    //   div.style.display = 'block'
-    // } else {
-    //   div.style.display = 'none'
-    // }
+      //给i赋值,获取当前页面向下滚动的高度
+      const i = document.documentElement.scrollTop
+      //当向下滚动100px的时候,显示div
+      // if (i >= 100) {
+      //   div.style.display = 'block'
+      // } else {
+      //   div.style.display = 'none'
+      // }
 
-    //可以变成简单三元赋值
-    div.style.display = i >= 100 ? 'block' : 'none'
+      //可以变成简单三元赋值
+      div.style.display = i >= 100 ? 'block' : 'none'
+    })
 
-  })
-
-  // div.addEventListener('scroll', function () {
-  //   // console.log(111);
-  //   console.log(div.scrollTop);
-  // })
-</script>
+    // div.addEventListener('scroll', function () {
+    //   // console.log(111);
+    //   console.log(div.scrollTop);
+    // })
+  </script>
 </body>
 ```
 
@@ -988,7 +964,7 @@ window.addEventListener('scroll',function(){
 
 ```js
 //页面滚动到y轴1000像素的位置
-window.scrollTo(0,1000)
+window.scrollTo(0, 1000)
 ```
 
 ### 页面尺寸事件
@@ -1001,32 +977,31 @@ window.scrollTo(0,1000)
 - `clientWidth`,`clientHeight`
 
 ```js
-    window.addEventListener('resize',function(){
-    //执行的代码
-    })
+window.addEventListener('resize', function () {
+  //执行的代码
+})
 ```
 
 ```js
-  //检测屏幕宽度:clientWidth
-  window.addEventListener('resize',function(){
-    let w = document.documentElement.clientWidth
-    concole.log(w)
-    })
+//检测屏幕宽度:clientWidth
+window.addEventListener('resize', function () {
+  let w = document.documentElement.clientWidth
+  concole.log(w)
+})
 ```
 
 ```html
 <body>
-<div class="tx">1234567</div>
+  <div class="tx">1234567</div>
 
-<script>
-  const tx = document.querySelector('.tx')
-  console.log(tx.clientWidth); //包含padding值,不包含boeder值
+  <script>
+    const tx = document.querySelector('.tx')
+    console.log(tx.clientWidth) //包含padding值,不包含boeder值
 
-  //resize 浏览器窗口大小发生变化的时候触发的事件
-  window.addEventListener('resize', function () {
-    console.log(1);
-  })
-
+    //resize 浏览器窗口大小发生变化的时候触发的事件
+    window.addEventListener('resize', function () {
+      console.log(1)
+    })
   </script>
 </body>
 ```
@@ -1054,9 +1029,8 @@ window.scrollTo(0,1000)
     const box = document.querySelector('.box')
     const p = document.querySelector('p')
 
-    // console.log(box.offsetLeft); 
-    console.log(p.offsetLeft);  //父级有position:relative,那么就是相对于父亲的
-
+    // console.log(box.offsetLeft);
+    console.log(p.offsetLeft) //父级有position:relative,那么就是相对于父亲的
   </script>
 </body>
 ```
@@ -1066,24 +1040,22 @@ window.scrollTo(0,1000)
 
 ```html
 <body>
-<div class="box"></div>
-<script>
-  const box = document.querySelector('.box')
-  console.log(box.getBoundingClientRect());
-  //     {
-  //     "x": 107.98828125,
-  //     "y": 100,
-  //     "width": 200,
-  //     "height": 200,
-  //     "top": 100,
-  //     "right": 307.98828125,
-  //     "bottom": 300,
-  //     "left": 107.98828125
-  // }
-
+  <div class="box"></div>
+  <script>
+    const box = document.querySelector('.box')
+    console.log(box.getBoundingClientRect())
+    //     {
+    //     "x": 107.98828125,
+    //     "y": 100,
+    //     "width": 200,
+    //     "height": 200,
+    //     "top": 100,
+    //     "right": 307.98828125,
+    //     "bottom": 300,
+    //     "left": 107.98828125
+    // }
   </script>
 </body>
-
 ```
 
 ## 日期对象Date()
@@ -1100,10 +1072,10 @@ window.scrollTo(0,1000)
       //实例化
       //1.得到当前时间
       const date = new Date()
-      console.log(date); //返回值:Sat Jan 17 2026 20:13:25 GMT+0800 (中国标准时间)
+      console.log(date) //返回值:Sat Jan 17 2026 20:13:25 GMT+0800 (中国标准时间)
       //2.指定时间
       const date1 = new Date('2022-5-1 08:30:00')
-      console.log(date1);//Sun May 01 2022 08:30:00 GMT+0800 (中国标准时间)
+      console.log(date1) //Sun May 01 2022 08:30:00 GMT+0800 (中国标准时间)
     </script>
   </body>
   ```
@@ -1125,15 +1097,11 @@ window.scrollTo(0,1000)
 - `date.tolocaleTimeString() //返回20:11:28`
 
 ```javascript
-  <script>
-    //1.获取日期对象
-    const date = new Date()
-    //使用里面的方法
-    console.log(date.getFullYear()); //2026
-    console.log(date.getMonth() + 1); //1
-    console.log(date.getDate()); //17
-    console.log(date.getDay()); //6
-  </script>
+<script>
+  //1.获取日期对象 const date = new Date() //使用里面的方法
+  console.log(date.getFullYear()); //2026 console.log(date.getMonth() + 1); //1
+  console.log(date.getDate()); //17 console.log(date.getDay()); //6
+</script>
 ```
 
 ```javascript
@@ -1176,16 +1144,15 @@ window.scrollTo(0,1000)
 
 ```javascript
 const date = new Date()
-    console.log(date.getTime());
+console.log(date.getTime())
 ```
 
 - 简写 +new Date()
   - 可以返回指定的时间戳
 
 ```javascript
- console.log(+new Date());
- console.log(+new Date('2022-4-1 18:30:00')); //返回当前的时间
-
+console.log(+new Date())
+console.log(+new Date('2022-4-1 18:30:00')) //返回当前的时间
 ```
 
 ```js
@@ -1212,7 +1179,7 @@ const date = new Date()
 - 使用 Date.now()
 
 ```javascript
-console.log(Date.now());
+console.log(Date.now())
 ```
 
 ---
@@ -1243,13 +1210,12 @@ console.log(Date.now());
 - 返回最近一级的父节点,找不到就返回为null
 
 ```html
- <script>
-    const baby = document.querySelector('.baby');
-    const dad = document.querySelector('.dad');
-    console.log(baby);  //返回dom对象 <div class="baby">222</div>
-    console.log(baby.parentNode); //返回父节点 <div class="dad">11 <div class="baby">222</div></div>
-
-  </script>
+<script>
+  const baby = document.querySelector('.baby')
+  const dad = document.querySelector('.dad')
+  console.log(baby) //返回dom对象 <div class="baby">222</div>
+  console.log(baby.parentNode) //返回父节点 <div class="dad">11 <div class="baby">222</div></div>
+</script>
 ```
 
 #### 子节点查找:父.children
@@ -1262,12 +1228,12 @@ console.log(Date.now());
   - 遍历
 
 ```html
-  <script>
-    const ul = document.querySelector('ul')
-    const lis = ul.children
-    console.log(lis); // HTMLCollection(8) [li, li, li, li, li, li, li, li]
-    console.log(ul.childNodes); // NodeList(15) [text, li, text, li, text, li, text, li, text, li, text, li, text, li, text]
-  </script>
+<script>
+  const ul = document.querySelector('ul')
+  const lis = ul.children
+  console.log(lis) // HTMLCollection(8) [li, li, li, li, li, li, li, li]
+  console.log(ul.childNodes) // NodeList(15) [text, li, text, li, text, li, text, li, text, li, text, li, text, li, text]
+</script>
 ```
 
 #### 兄弟关系查找:preES/nexES
@@ -1276,11 +1242,11 @@ console.log(Date.now());
 - 上一个兄弟节点:`i2.nextElementSibling`
 
 ```html
-  <script>
-    const li2 = document.querySelector('li:nth-child(2)')
-    console.log(li2.previousElementSibling); // 上一个兄弟元素  1
-    console.log(li2.nextElementSibling); // 下一个兄弟元素  3
-  </script>
+<script>
+  const li2 = document.querySelector('li:nth-child(2)')
+  console.log(li2.previousElementSibling) // 上一个兄弟元素  1
+  console.log(li2.nextElementSibling) // 下一个兄弟元素  3
+</script>
 ```
 
 ### 增加节点
@@ -1299,19 +1265,13 @@ console.log(Date.now());
 - `父元素.insertBefore(要插入的元素,在那个元素前面)`
 
 ```js
-  <script>
-    //创建节点
-    const ul = document.querySelector('ul')
-    const li4 = document.createElement('li')
-    const li0 = document.createElement('li')
-    //插入节点
-    ul.appendChild(li4)
-    li4.innerText = '新增的节点'
-
-    ul.insertBefore(li0, ul.children[2])
-    li0.innerText = '插入到数组第二个前面的节点'
-
-  </script>
+<script>
+  //创建节点 const ul = document.querySelector('ul') const li4 =
+  document.createElement('li') const li0 = document.createElement('li')
+  //插入节点 ul.appendChild(li4) li4.innerText = '新增的节点'
+  ul.insertBefore(li0, ul.children[2]) li0.innerText =
+  '插入到数组第二个前面的节点'
+</script>
 ```
 
 #### 克隆节点 clonN
@@ -1322,20 +1282,20 @@ console.log(Date.now());
 - 默认false
 
 ```html
-  <script>
-    const ul = document.querySelector('ul')
-    const ul2 = ul.cloneNode(true) //带着后代一起被克隆
-    console.log(ul2);
-    document.body.appendChild(ul2) 
+<script>
+  const ul = document.querySelector('ul')
+  const ul2 = ul.cloneNode(true) //带着后代一起被克隆
+  console.log(ul2)
+  document.body.appendChild(ul2)
 
-    const ul3 = ul.cloneNode(false) //只克隆自身
-    console.log(ul3);
-    document.body.appendChild(ul3)
+  const ul3 = ul.cloneNode(false) //只克隆自身
+  console.log(ul3)
+  document.body.appendChild(ul3)
 
-    ul.appendChild(ul.children[0].cloneNode(true)) // 复制第一个li节点和里面值
+  ul.appendChild(ul.children[0].cloneNode(true)) // 复制第一个li节点和里面值
 
-    ul.appendChild(ul.children[0].cloneNode(false)) // 复制第一个li节点无值
-  </script>
+  ul.appendChild(ul.children[0].cloneNode(false)) // 复制第一个li节点无值
+</script>
 ```
 
 ### 删除节点
@@ -1347,11 +1307,11 @@ console.log(Date.now());
   - 隐藏节点还是存在的,但是删除,则从html中删除节点
 
 ```html
-  <script>
-    const ul = document.querySelector('ul')
-    ul.removeChild(ul.children[2]) // 删除第三个li节点
-    console.log(ul);
-  </script>
+<script>
+  const ul = document.querySelector('ul')
+  ul.removeChild(ul.children[2]) // 删除第三个li节点
+  console.log(ul)
+</script>
 ```
 
 ---
@@ -1366,38 +1326,38 @@ console.log(Date.now());
 - touch对象代表一个触摸点,触摸点可能是一根手指,一根触摸笔
 - 触屏事件可以响应用户手指(或者触控笔)对屏幕或则和触控板的操作
 
-|触屏touch事件|说明|
-|:---|:---|
-|touchstart|手指触摸到一个DOM元素时触发|
-|touchmove|手指在一个DOM元素上滑动时触发|
-|touchend|手指从一个DOM元素上移开时触发|
+| 触屏touch事件 | 说明                          |
+| :------------ | :---------------------------- |
+| touchstart    | 手指触摸到一个DOM元素时触发   |
+| touchmove     | 手指在一个DOM元素上滑动时触发 |
+| touchend      | 手指从一个DOM元素上移开时触发 |
 
 ```html
-  <script>
-    const box = document.querySelector('.box');
-    //1.触摸
-    box.addEventListener('touchstart', () => {
-      console.log('触摸开始');
-    });
+<script>
+  const box = document.querySelector('.box')
+  //1.触摸
+  box.addEventListener('touchstart', () => {
+    console.log('触摸开始')
+  })
 
-    //3.移动
-    box.addEventListener('touchmove', () => {
-      console.log('触摸移动');
-    });
+  //3.移动
+  box.addEventListener('touchmove', () => {
+    console.log('触摸移动')
+  })
 
-    //2.离开
-    box.addEventListener('touchend', () => {
-      console.log('触摸结束');
-    });
-  </script>
+  //2.离开
+  box.addEventListener('touchend', () => {
+    console.log('触摸结束')
+  })
+</script>
 ```
 
 ## js插件-swiper
 
-- [官网](<https://swiper.com.cn/>)
-- Swiper 基础演示 [在线演示](<https://swiper.com.cn/demo/index.html>)
-- 基本使用流程 [Swiper 使用方法](<https://swiper.com.cn/usage/index.html>)
-- 查看API文档 [配置插件](<https://swiper.com.cn/api/index.html>)
+- [官网](https://swiper.com.cn/)
+- Swiper 基础演示 [在线演示](https://swiper.com.cn/demo/index.html)
+- 基本使用流程 [Swiper 使用方法](https://swiper.com.cn/usage/index.html)
+- 查看API文档 [配置插件](https://swiper.com.cn/api/index.html)
 
 ---
 
@@ -1421,33 +1381,32 @@ console.log(Date.now());
 - 清除延迟函数 `clearTimeout`
 
 ```html
-  <script>
-    let timer = setTimeout(() => {
-      console.log('2秒到了');
-    }, 2000);
+<script>
+  let timer = setTimeout(() => {
+    console.log('2秒到了')
+  }, 2000)
 
-    clearTimeout(timer);
-    console.log('定时器被清除');
-
-  </script>
+  clearTimeout(timer)
+  console.log('定时器被清除')
+</script>
 ```
 
 ```js
-  //消除多次使用定时器的bug
-  let timeID = 0;
+//消除多次使用定时器的bug
+let timeID = 0
 
-  //显示函数
-  function show() {
-    clearTimeout(timeID);
-    large.style.display = 'block';
-  }
+//显示函数
+function show() {
+  clearTimeout(timeID)
+  large.style.display = 'block'
+}
 
-  //隐藏函数
-  function hide() {
-    timeID = setTimeout(function () {
-      large.style.display = 'none';
-    }, 200);
-  }
+//隐藏函数
+function hide() {
+  timeID = setTimeout(function () {
+    large.style.display = 'none'
+  }, 200)
+}
 ```
 
 #### 两种定时器对比:执行次数
@@ -1461,7 +1420,8 @@ console.log(Date.now());
 - 单线程意味,所有任务需要排队,前一个任务结束,才会执行后一个任务
   - 造成问题:如果js执行的时间过长,这样就会造成页面的渲染不连贯,导致页面显然加载阻塞
 - 为了解决这个问题,利用多核CPU的计算能力
-- HTML5提出Web Worker 标准,允许js脚本创建多个线程(推到浏览器),于是js出现了同步和异步
+- HTML5提出Web
+  Worker 标准,允许js脚本创建多个线程(推到浏览器),于是js出现了同步和异步
 
 #### 同步和异步
 
@@ -1471,8 +1431,7 @@ console.log(Date.now());
 
 #### 同步任务
 
-- 主线程上执行,形成一个执行栈
-![执行栈](img/执行栈.jpg)
+- 主线程上执行,形成一个执行栈 ![执行栈](img/执行栈.jpg)
 
 #### 异步任务
 
@@ -1482,31 +1441,29 @@ console.log(Date.now());
   2. 资源加载,如`load`、`error`
   3. 定时器,包括`setInterval`、`setTimeout`
 - 异步任务相关添加到任务队列中(任务队列也称为消息队列)
-![任务队列](img/任务队列.jpg)
+  ![任务队列](img/任务队列.jpg)
 
 #### 事件循环
 
 1. 先执行执行栈中的同步任务
 2. 异步任务放入任务队列中
 3. 一旦执行栈中的所有同步任务执行完毕,系统就会按次序读取任务队列中的异步任务,于是被读取的异步任务结束等待状态,进入执行栈,开始执行
-![事件循环](img/事件循环.jpg)
+   ![事件循环](img/事件循环.jpg)
 
-- 由于主线程不断的重复获得任务,执行任务,再获取任务,再执行,所以这种机制被称为事件循环(event loop)
+- 由于主线程不断的重复获得任务,执行任务,再获取任务,再执行,所以这种机制被称为事件循环(event
+  loop)
 
 ### location对象 - http相关
 
 - `location`的数据类型是对象,拆分并保存url地址的各个组成部分
 
 ```js
-  <script>
-    console.log(window.location);
-
-    //利用js的方式跳转页面
-    console.log(location.href); //获取当前页面的完整URL地址
-    console.log(location.search); //获取问号后面的参数
-    // 以后获取表单账户和密码的时候可以使用
-    location.href = "https://www.baidu.com";
-  </script>
+<script>
+  console.log(window.location); //利用js的方式跳转页面
+  console.log(location.href); //获取当前页面的完整URL地址
+  console.log(location.search); //获取问号后面的参数 //
+  以后获取表单账户和密码的时候可以使用 location.href = "https://www.baidu.com";
+</script>
 ```
 
 #### 常用的属性
@@ -1520,7 +1477,7 @@ console.log(Date.now());
 - reload:刷新当前页面,传入参数true时,表示强制刷新
 
   ```js
-    location.reload(true)
+  location.reload(true)
   ```
 
 ### navigator对象 - 设备信息
@@ -1528,21 +1485,20 @@ console.log(Date.now());
 - 该对象记录了浏览器自身的相关信息
 
 ```html
-  <script>
-    //检测userAgent信息
-    const userAgent = navigator.userAgent;
-    const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/);
-    const ipad = userAgent.match(/(iPad).*OS\s([\d_]+)/);
-    const iphone = !ipad && userAgent.match(/(iPhone\sOS)\s([\d_]+)/);
+<script>
+  //检测userAgent信息
+  const userAgent = navigator.userAgent
+  const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/)
+  const ipad = userAgent.match(/(iPad).*OS\s([\d_]+)/)
+  const iphone = !ipad && userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
 
-    //验证是否为Android设备或者pc设备
-    if (android || iphone || ipad) {
-      console.log("移动端设备");
-    } else {
-      console.log("pc端设备");
-    }
-
-  </script> 
+  //验证是否为Android设备或者pc设备
+  if (android || iphone || ipad) {
+    console.log('移动端设备')
+  } else {
+    console.log('pc端设备')
+  }
+</script>
 ```
 
 ### history对象.go() - 页面前后
@@ -1563,7 +1519,7 @@ console.log(Date.now());
 
 ```js
 // 语法：window.confirm(提示文本)，window可省略
-const result = confirm(message);
+const result = confirm(message)
 ```
 
 - 参数：message（字符串），显示在弹窗中的提示文本。
@@ -1574,11 +1530,11 @@ const result = confirm(message);
 ```html
 <body>
   <script>
-    const isDelete = confirm("你确定要删除吗？");
+    const isDelete = confirm('你确定要删除吗？')
     if (isDelete) {
-      alert("删除成功");
+      alert('删除成功')
     } else {
-      alert("取消删除");
+      alert('取消删除')
     }
   </script>
 </body>
@@ -1605,25 +1561,18 @@ const result = confirm(message);
 - 以键值对的形式存储使用
 - 只能存储字符串,获取也是得到字符串
 
-- 语法
-存储数据:`localStorage.setltem(key,value)`
-获取数据:`localStorage.getltem(key)`
-删除数据:`localStorage.removeItem(key)`
+- 语法存储数据:`localStorage.setltem(key,value)`
+  获取数据:`localStorage.getltem(key)` 删除数据:`localStorage.removeItem(key)`
 
 ```js
-  <script>
-    localStorage.setItem("name", "zhangsan"); // 存储姓名
-    localStorage.setItem("age", "18"); // 存储年龄
-
-    // 读取数据
-    const name = localStorage.getItem("name");
-    const age = localStorage.getItem("age");
-    console.log(`姓名: ${name}, 年龄: ${age}`);
-
-    // 删除数据
-    localStorage.removeItem("age"); // 删除年龄
-    localStorage.clear(); // 清除所有数据
-  </script>
+<script>
+  localStorage.setItem("name", "zhangsan"); // 存储姓名
+  localStorage.setItem("age", "18"); // 存储年龄 // 读取数据 const name =
+  localStorage.getItem("name"); const age = localStorage.getItem("age");
+  console.log(`姓名: ${name}, 年龄: ${age}`); // 删除数据
+  localStorage.removeItem("age"); // 删除年龄 localStorage.clear(); //
+  清除所有数据
+</script>
 ```
 
 #### sessionStorage:会话窗口
@@ -1640,28 +1589,26 @@ const result = confirm(message);
 - 将复杂数据类型转换成JSON字符串,存储到本地
 - json序列化,这是JSON方法
 
-1. 变成JSON对象
-语法:`localStorage.setItem("obj", JSON.stringify(obj))`
+1. 变成JSON对象语法:`localStorage.setItem("obj", JSON.stringify(obj))`
 
-2. 转回对象
-语法:`JSON.parse(localStorage.getItem("obj"))`
+2. 转回对象语法:`JSON.parse(localStorage.getItem("obj"))`
 
 ```html
- <script>
-    const obj = {
-      name: "Alice",
-      age: 30,
-    };
+<script>
+  const obj = {
+    name: 'Alice',
+    age: 30
+  }
 
-    localStorage.setItem("obj", JSON.stringify(obj));
+  localStorage.setItem('obj', JSON.stringify(obj))
 
-    //取
-    console.log(localStorage.getItem("obj")); // "{"name":"Alice","age":30}"
+  //取
+  console.log(localStorage.getItem('obj')) // "{"name":"Alice","age":30}"
 
-    // 转回对象
-    const parsedObj = JSON.parse(localStorage.getItem("obj"));
-    console.log(parsedObj); // {name: "Alice", age: 30}
-  </script>
+  // 转回对象
+  const parsedObj = JSON.parse(localStorage.getItem('obj'))
+  console.log(parsedObj) // {name: "Alice", age: 30}
+</script>
 ```
 
 #### JSON对象
@@ -1695,20 +1642,15 @@ const result = confirm(message);
 
 #### 是否有符合的字符串test/tf
 
-- test()方法:用来查看正则表达式与指定字符串是否匹配
--语法:`regObj.test(被检测的字符串)`
+- test()方法:用来查看正则表达式与指定字符串是否匹配 -语法:`regObj.test(被检测的字符串)`
 - 返回值:true / false
 
 ```js
-  <script>
-    const str = '今天很开心,我在学习前端'
-    const reg1 = /前端/  // 字符串中是否包含"前端"
-    if (reg1.test(str)) {
-      console.log('包含前端')
-    } else {
-      console.log('不包含前端')
-    }
-  </script>
+<script>
+  const str = '今天很开心,我在学习前端' const reg1 = /前端/ //
+  字符串中是否包含"前端" if (reg1.test(str)) {console.log('包含前端')} else{' '}
+  {console.log('不包含前端')}
+</script>
 ```
 
 #### 检索(查找)符合规则的字符串exec()
@@ -1717,12 +1659,12 @@ const result = confirm(message);
 - 如果匹配成功,exec()返回一个数组,否则返回null
 
 ```html
-  <script>
-    const str = '今天很开心,我在学习前端'
-    const reg1 = /前端/  // 字符串中是否包含"前端"
-    console.log(reg1.exec(str));
-    // [ '前端', index: 9, input: '今天很开心,我在学习前端', groups: undefined ]
-  </script>
+<script>
+  const str = '今天很开心,我在学习前端'
+  const reg1 = /前端/ // 字符串中是否包含"前端"
+  console.log(reg1.exec(str))
+  // [ '前端', index: 9, input: '今天很开心,我在学习前端', groups: undefined ]
+</script>
 ```
 
 ### 元字符
@@ -1734,8 +1676,8 @@ const result = confirm(message);
   - 规定用户只能输入英文24个字母,可以换成元字符写法`[a-z]`
 
 - 参考文档
-  - [MDA文档-正则表达式](<https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Regular_expressions>)
-  - [正则测试工具](<https://tool.oschina.net/regex>)
+  - [MDA文档-正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Regular_expressions)
+  - [正则测试工具](https://tool.oschina.net/regex)
 
 #### 边界符^/$
 
@@ -1745,14 +1687,14 @@ const result = confirm(message);
 - /^$/表示精确匹配,表达式里面必须和字符串完全一样
 
 ```html
-  <script>
-    const str = '哈今天很开心,我在学习前端'
-    const reg2 = /前端$/  // 字符串是否以"前端"结尾
-    console.log(reg2.test(str));// true
-    console.log(`是否以天开头${/^天/.test(str)}`);// false,不是以天开头
-    console.log(/^哈$/.test('哈'));// true,精确匹配,里面只能有一个哈
-    //只有一个'哈'是true ,否则其他的全是false
-  </script>
+<script>
+  const str = '哈今天很开心,我在学习前端'
+  const reg2 = /前端$/ // 字符串是否以"前端"结尾
+  console.log(reg2.test(str)) // true
+  console.log(`是否以天开头${/^天/.test(str)}`) // false,不是以天开头
+  console.log(/^哈$/.test('哈')) // true,精确匹配,里面只能有一个哈
+  //只有一个'哈'是true ,否则其他的全是false
+</script>
 ```
 
 #### 量词
@@ -1760,23 +1702,23 @@ const result = confirm(message);
 - 表示匹配次数
 - 设定某个模式出现的次数
 
-|量词|说明|
-|:---:|:---|
-|*|重复零次或更多次|
-|+|重复一次或更多次|
-|?|重复零次或者一次|
-|{n}|重复n次|
-|{n,}|重复n次或者更多次|
-|{n,m}|重复n到m次|
+| 量词  | 说明              |
+| :---: | :---------------- |
+|  \*   | 重复零次或更多次  |
+|   +   | 重复一次或更多次  |
+|   ?   | 重复零次或者一次  |
+|  {n}  | 重复n次           |
+| {n,}  | 重复n次或者更多次 |
+| {n,m} | 重复n到m次        |
 
 ```html
-  <script>
-    console.log(/^哈*$/.test('哈哈哈哈'));
-    // true, 哈可以出现0次或多次
+<script>
+  console.log(/^哈*$/.test('哈哈哈哈'))
+  // true, 哈可以出现0次或多次
 
-    console.log(/^哈{5,9}$/.test('哈哈哈哈哈'));
-    // true, 哈出现5到9次
-  </script>
+  console.log(/^哈{5,9}$/.test('哈哈哈哈哈'))
+  // true, 哈出现5到9次
+</script>
 ```
 
 #### 字符类
@@ -1784,19 +1726,19 @@ const result = confirm(message);
 - []匹配类字符合集
 
 ```html
-  <script>
-    //只要字符串中包含[]中的字符就匹配成功
-    console.log(/[abc]/.test('andy'));// true, 字符串中包含a或b或c
+<script>
+  //只要字符串中包含[]中的字符就匹配成功
+  console.log(/[abc]/.test('andy')) // true, 字符串中包含a或b或c
 
-    console.log(/^[a-z]$*/.test('opp'));// true, 字符串只包含小写字母
-    // ^表示开头，$表示结尾，a-z表示小写字母，*表示前面的字符可以出现0次或多次
+  console.log(/^[a-z]$*/.test('opp')) // true, 字符串只包含小写字母
+  // ^表示开头，$表示结尾，a-z表示小写字母，*表示前面的字符可以出现0次或多次
 
-    console.log(/^[a-zA-Z0-9]{3,6}$/.test('opp'));
-    // true, 字符串只包含大小写字母和数字，且长度在3-6之间
+  console.log(/^[a-zA-Z0-9]{3,6}$/.test('opp'))
+  // true, 字符串只包含大小写字母和数字，且长度在3-6之间
 
-    //腾讯qq号，5-12位数字，且第一位不能为0,第二位-最后一位可以是0-9的数字
-    console.log(/^[1-9][0-9]{4,11}$/.test('12345678901'));// true
-  </script>
+  //腾讯qq号，5-12位数字，且第一位不能为0,第二位-最后一位可以是0-9的数字
+  console.log(/^[1-9][0-9]{4,11}$/.test('12345678901')) // true
+</script>
 ```
 
 - 比如\d表示(0-9)
@@ -1811,14 +1753,14 @@ const result = confirm(message);
 
 - 指的是常见模式的简写方式
 
-|预定类|说明|
-|:---|:---|
-|\d|匹配0-9之间的任一数字,相当于`[0-9]`|
-|\D|匹配0-9之外的字符,相当于`[^0-9]`|
-|\w|匹配任意字母,数字和下划线,相当于`[A-Za-z0-9_]`|
-|\W|除所有字母,数字,下划线以外的字符,相当于`[^A-Za-z0-9_]`|
-|\s|匹配空格(包括换行符,制表符,空格符等),相当于[\t\r\n\v\f]|
-|\S|匹配非空的字符,相当于[\t\r\n\v\f]|
+| 预定类 | 说明                                                    |
+| :----- | :------------------------------------------------------ |
+| \d     | 匹配0-9之间的任一数字,相当于`[0-9]`                     |
+| \D     | 匹配0-9之外的字符,相当于`[^0-9]`                        |
+| \w     | 匹配任意字母,数字和下划线,相当于`[A-Za-z0-9_]`          |
+| \W     | 除所有字母,数字,下划线以外的字符,相当于`[^A-Za-z0-9_]`  |
+| \s     | 匹配空格(包括换行符,制表符,空格符等),相当于[\t\r\n\v\f] |
+| \S     | 匹配非空的字符,相当于[\t\r\n\v\f]                       |
 
 ### 修饰符
 
@@ -1831,16 +1773,16 @@ const result = confirm(message);
 - g是单词global的缩写,匹配所有满足正则表达式的结果
 
 ```html
-  <script>
-    console.log(/a/.test('A'));
-    // false, 区分大小写
+<script>
+  console.log(/a/.test('A'))
+  // false, 区分大小写
 
-    console.log(/a/i.test('A'));
-    // true, i表示忽略大小写
+  console.log(/a/i.test('A'))
+  // true, i表示忽略大小写
 
-     const req = /哈哈|不如|不好|差劲/ig;
-      // |是或者的意思，匹配其中一个即可
-  </script>
+  const req = /哈哈|不如|不好|差劲/gi
+  // |是或者的意思，匹配其中一个即可
+</script>
 ```
 
 #### 替换replace
@@ -1848,7 +1790,7 @@ const result = confirm(message);
 - 语法:`字符串.replace(/正则表达式/,'替换的文本')`
 
 ```js
-    const str = 'java是一门编程语言,学完JAVA可以开发很多东西';
-    const newStr = str.replace(/JAVA/ig, '前端');
-    console.log(newStr);
+const str = 'java是一门编程语言,学完JAVA可以开发很多东西'
+const newStr = str.replace(/JAVA/gi, '前端')
+console.log(newStr)
 ```
