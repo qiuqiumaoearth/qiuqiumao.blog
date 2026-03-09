@@ -56,10 +56,10 @@
       <h2>🚀 项目展示</h2>
       <div class="projects">
         <div class="project-card">
-          <h3>移动端智慧管理系统</h3>
+          <h3>移动端智慧商城</h3>
           <p>
-            基于 Vue2 + Node.js
-            实现的移动端智慧管理系统，支持用户登录、数据可视化。
+            基于 Vue2 + Vue Router + Vuex + Vant + Axios
+            开发移动端电商商城系统，实现商品浏览、搜索、购物车、订单结算和订单管理等完整电商流程。
           </p>
           <a href="https://hm-shopping-rho.vercel.app/#/home" target="_blank">
             访问项目
@@ -71,6 +71,18 @@
             使用 Vue3 + Pinia 实现的前端任务管理应用，可展示每日任务与进度。
           </p>
           <a href="https://your-task-app.vercel.app" target="_blank">
+            访问项目
+          </a>
+        </div>
+        <div class="project-card">
+          <h3>Vue3 + Pinia 实现后台文章管理系统</h3>
+          <p>
+            文章管理系统是一个基于
+            Vue3构建的后台管理系统，实现了文章的新增、编辑、删除以及分类管理等功能。
+          </p>
+          <p>该项目主要用于练习前端后台系统开发、组件化设计以及状态管理。</p>
+          <p>技术栈:Vue3 +Pinia+ Vue +Router +Element Plus +Axios +Vite</p>
+          <a href="https://element-project.vercel.app/" target="_blank">
             访问项目
           </a>
         </div>
