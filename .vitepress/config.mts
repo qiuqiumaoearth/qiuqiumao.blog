@@ -11,7 +11,10 @@ const blogTheme = getThemeConfig({
     pageSize: 5 // 👈 每页显示5篇文章
   },
 
-  author: 'qiumao'
+  author: 'qiumao',
+
+  // 禁用搜索功能（pagefind 在 Windows x64 上不兼容）
+  search: false
 })
 
 export default defineConfig({
