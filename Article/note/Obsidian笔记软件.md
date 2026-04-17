@@ -1,7 +1,7 @@
 ---
 title: Obsidian笔记软件
 date: 2026-04-11T17:27:00.000Z
-updated: 2026-04-12T14:37:00.000Z
+updated: 2026-04-16T14:51:00.000Z
 ---
 
 # Obsidian笔记软件

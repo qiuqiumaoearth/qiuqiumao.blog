@@ -1,8 +1,12 @@
-require('dotenv').config()
+// 运行命令
+// cd D:\xuexi\qiuqiumao.blog\scripts
+// node sync-notion.js
+
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '../.env') })
 const { Client } = require('@notionhq/client')
 const { NotionToMarkdown } = require('notion-to-md')
 const fs = require('fs')
-const path = require('path')
 
 // 初始化 Notion 客户端
 const notion = new Client({
