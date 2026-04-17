@@ -5,7 +5,14 @@
       "Bash(node -e \"require\\('dotenv'\\).config\\(\\); const { Client } = require\\('@notionhq/client'\\); const notion = new Client\\({ auth: process.env.NOTION_TOKEN }\\); console.log\\('Token loaded:', process.env.NOTION_TOKEN ? 'Yes' : 'No'\\); console.log\\('Client created:', typeof notion.databases\\)\")",
       "Bash(node scripts/sync-notion.js)",
       "Bash(node -e ':*)",
-      "Bash(ls -lh Article/note/*.md)"
+      "Bash(ls -lh Article/note/*.md)",
+      "Bash(gh run:*)",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(tee build-full.log)",
+      "Bash(echo \"=== Exit code: $? ===\")",
+      "Bash(git add:*)",
+      "Bash(git commit -m 'fix: 禁用 pagefind 搜索功能以修复 Windows 构建失败:*)",
+      "Bash(git push:*)"
     ]
   }
 }

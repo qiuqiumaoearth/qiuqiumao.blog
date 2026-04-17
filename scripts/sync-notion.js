@@ -19,8 +19,8 @@ async function syncNotionToMarkdown() {
 
   try {
     // 1. 查询数据库，筛选"展示"为 true 的文章
-    const response = await notion.dataSources.query({
-      data_source_id: DATABASE_ID,
+    const response = await notion.databases.query({
+      database_id: DATABASE_ID,
       filter: {
         property: '展示',
         checkbox: {
