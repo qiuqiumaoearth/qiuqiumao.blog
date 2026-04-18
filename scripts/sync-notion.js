@@ -68,7 +68,7 @@ async function processImages(markdown, articleTitle) {
         const hash = crypto.createHash('md5').update(imageUrl).digest('hex').substring(0, 8)
         const ext = imageUrl.split('.').pop().split('?')[0] || 'png'
         const filename = `${articleTitle.replace(/[\/\\:*?"<>|]/g, '-')}-${hash}.${ext}`
-        const imagePath = path.join(__dirname, '../public/images/notion', filename)
+        const imagePath = path.join(__dirname, '../Article/public/images/notion', filename)
 
         // 如果图片已存在，跳过下载
         if (!fs.existsSync(imagePath)) {
