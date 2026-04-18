@@ -139,7 +139,7 @@ GitHub Actions（定时执行）
 | **状态**   | Select           | 草稿/已发布          |
 
 
-![bdf2fe13-c4db-471b-a6a4-3f1094081814.png](/images/notion/Notion 同步到博客方案设计-72917aed.png)
+![bdf2fe13-c4db-471b-a6a4-3f1094081814.png](/images/notion/Notion 同步到博客方案设计-a12df5b1.png)
 
 
 ### 1.2 获取 Notion 集成密钥
@@ -152,10 +152,10 @@ GitHub Actions（定时执行）
     - Capabilities: 勾选 `Read content`
 4. 点击"Submit"，复制 `Internal Integration Token`
 
-![image.png](/images/notion/Notion 同步到博客方案设计-bffc11f9.png)
+![image.png](/images/notion/Notion 同步到博客方案设计-579f8303.png)
 
 
-![image.png](/images/notion/Notion 同步到博客方案设计-dc3deb0d.png)
+![image.png](/images/notion/Notion 同步到博客方案设计-23e65bc1.png)
 
 
 ### 1.3 连接数据库到集成
@@ -167,13 +167,13 @@ GitHub Actions（定时执行）
     - 格式：`https://notion.so/xxxxx?v=yyyyy\`
     - Database ID 就是 `xxxxx` 部分
 
-![image.png](/images/notion/Notion 同步到博客方案设计-26d47c13.png)
+![image.png](/images/notion/Notion 同步到博客方案设计-6c051e12.png)
 
 
-![Database ID=7c70a486-c3e7-826e-a2e7-87c7e164facb](/images/notion/Notion 同步到博客方案设计-7ca20045.png)
+![Database ID=7c70a486-c3e7-826e-a2e7-87c7e164facb](/images/notion/Notion 同步到博客方案设计-f5ecf662.png)
 
 
-![NOTION_TOKEN](/images/notion/Notion 同步到博客方案设计-71465e9a.png)
+![NOTION_TOKEN](/images/notion/Notion 同步到博客方案设计-55618204.png)
 
 
 
@@ -313,10 +313,10 @@ NOTION_DATABASE_ID=your_database_id
 ```
 
 
-![image.png](/images/notion/Notion 同步到博客方案设计-041b9f13.png)
+![image.png](/images/notion/Notion 同步到博客方案设计-aae7112e.png)
 
 
-![image.png](/images/notion/Notion 同步到博客方案设计-2beca9e0.png)
+![image.png](/images/notion/Notion 同步到博客方案设计-574c0303.png)
 
 
 
