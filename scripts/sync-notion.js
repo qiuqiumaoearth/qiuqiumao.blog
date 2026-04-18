@@ -7,6 +7,9 @@ require('dotenv').config({ path: path.join(__dirname, '../.env') })
 const { Client } = require('@notionhq/client')
 const { NotionToMarkdown } = require('notion-to-md')
 const fs = require('fs')
+const https = require('https')
+const http = require('http')
+const crypto = require('crypto')
 
 // 初始化 Notion 客户端
 const notion = new Client({
@@ -16,6 +19,77 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion })
 
 const DATABASE_ID = process.env.NOTION_DATABASE_ID
+
+// 下载图片到本地
+async function downloadImage(url, filepath) {
+  return new Promise((resolve, reject) => {
+    const protocol = url.startsWith('https') ? https : http
+    const file = fs.createWriteStream(filepath)
+
+    protocol
+      .get(url, (response) => {
+        if (response.statusCode !== 200) {
+          reject(new Error(`Failed to download: ${response.statusCode}`))
+          return
+        }
+        response.pipe(file)
+        file.on('finish', () => {
+          file.close()
+          resolve()
+        })
+      })
+      .on('error', (err) => {
+        fs.unlink(filepath, () => {})
+        reject(err)
+      })
+  })
+}
+
+// 处理 Markdown 中的图片
+async function processImages(markdown, articleTitle) {
+  const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g
+  let match
+  let processedMarkdown = markdown
+  const matches = []
+
+  // 收集所有图片
+  while ((match = imageRegex.exec(markdown)) !== null) {
+    matches.push(match)
+  }
+
+  // 处理每张图片
+  for (const match of matches) {
+    const [fullMatch, alt, imageUrl] = match
+
+    // 只处理 Notion 图片（包含 notion 或 amazonaws）
+    if (imageUrl.includes('notion') || imageUrl.includes('amazonaws')) {
+      try {
+        // 生成唯一文件名
+        const hash = crypto.createHash('md5').update(imageUrl).digest('hex').substring(0, 8)
+        const ext = imageUrl.split('.').pop().split('?')[0] || 'png'
+        const filename = `${articleTitle.replace(/[\/\\:*?"<>|]/g, '-')}-${hash}.${ext}`
+        const imagePath = path.join(__dirname, '../public/images/notion', filename)
+
+        // 如果图片已存在，跳过下载
+        if (!fs.existsSync(imagePath)) {
+          console.log(`  📥 下载图片: ${filename}`)
+          await downloadImage(imageUrl, imagePath)
+        } else {
+          console.log(`  ✓ 图片已存在: ${filename}`)
+        }
+
+        // 替换为本地路径
+        const localUrl = `/images/notion/${filename}`
+        processedMarkdown = processedMarkdown.replace(fullMatch, `![${alt}](${localUrl})`)
+      } catch (error) {
+        console.error(`  ⚠️  图片下载失败: ${imageUrl}`, error.message)
+        // 下载失败时保留原 URL
+      }
+    }
+  }
+
+  return processedMarkdown
+}
 
 // 主函数
 async function syncNotionToMarkdown() {
@@ -79,6 +153,9 @@ async function syncPage(page) {
 
     // 移除 Markdown 分割线（避免与主题自带分割线重复）
     let markdown = mdString.parent.replace(/^---\s*$/gm, '').trim()
+
+    // 处理图片：下载并替换为本地路径
+    markdown = await processImages(markdown, title)
 
     // 生成 frontmatter（文章头部信息）
     const frontmatter = `---
