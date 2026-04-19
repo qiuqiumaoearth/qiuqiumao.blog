@@ -89,7 +89,7 @@ where.exe git
 我的输出是：
 
 
-![image.png](/images/notion/安装 Claude Code 教程-fd9ecd39.png)
+![image.png](/images/notion/%E5%AE%89%E8%A3%85%20Claude%20Code%20%E6%95%99%E7%A8%8B-fd9ecd39.png)
 
 
 这说明：
@@ -144,7 +144,7 @@ winget install Anthropic.ClaudeCode
 我的完整输出如下：
 
 
-![image.png](/images/notion/安装 Claude Code 教程-3693ebab.png)
+![image.png](/images/notion/%E5%AE%89%E8%A3%85%20Claude%20Code%20%E6%95%99%E7%A8%8B-3693ebab.png)
 
 
 看到最后这两句就说明已经安装成功：
@@ -183,7 +183,7 @@ claude --version
 ```
 
 
-![image.png](/images/notion/安装 Claude Code 教程-eb678a8f.png)
+![image.png](/images/notion/%E5%AE%89%E8%A3%85%20Claude%20Code%20%E6%95%99%E7%A8%8B-eb678a8f.png)
 
 
 如果能正常显示版本号，就说明 Claude Code 已经安装成功了。

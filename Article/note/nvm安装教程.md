@@ -209,7 +209,7 @@ nvm use版本号 使用指定版本的nodejs （ 这时会发现在启用的 nod
 ![08ab69777a8746f58997b72e5e9f6654.png](https://i-blog.csdnimg.cn/direct/08ab69777a8746f58997b72e5e9f6654.png)
 
 
-![image.png](/images/notion/nvm安装教程-3c0f9480.png)
+![image.png](/images/notion/nvm%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B-3c0f9480.png)
 
 
 

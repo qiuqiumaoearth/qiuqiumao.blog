@@ -139,7 +139,7 @@ GitHub Actions（定时执行）
 | **状态**   | Select           | 草稿/已发布          |
 
 
-![bdf2fe13-c4db-471b-a6a4-3f1094081814.png](/images/notion/Notion 同步到博客方案设计-ab45b6cf.png)
+![bdf2fe13-c4db-471b-a6a4-3f1094081814.png](/images/notion/Notion%20%E5%90%8C%E6%AD%A5%E5%88%B0%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1-ab45b6cf.png)
 
 
 ### 1.2 获取 Notion 集成密钥
@@ -152,10 +152,10 @@ GitHub Actions（定时执行）
     - Capabilities: 勾选 `Read content`
 4. 点击"Submit"，复制 `Internal Integration Token`
 
-![image.png](/images/notion/Notion 同步到博客方案设计-6916488a.png)
+![image.png](/images/notion/Notion%20%E5%90%8C%E6%AD%A5%E5%88%B0%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1-6916488a.png)
 
 
-![image.png](/images/notion/Notion 同步到博客方案设计-aa373330.png)
+![image.png](/images/notion/Notion%20%E5%90%8C%E6%AD%A5%E5%88%B0%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1-aa373330.png)
 
 
 ### 1.3 连接数据库到集成
@@ -167,13 +167,13 @@ GitHub Actions（定时执行）
     - 格式：`https://notion.so/xxxxx?v=yyyyy\`
     - Database ID 就是 `xxxxx` 部分
 
-![image.png](/images/notion/Notion 同步到博客方案设计-8cdc3661.png)
+![image.png](/images/notion/Notion%20%E5%90%8C%E6%AD%A5%E5%88%B0%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1-8cdc3661.png)
 
 
-![Database ID=7c70a486-c3e7-826e-a2e7-87c7e164facb](/images/notion/Notion 同步到博客方案设计-819a8f47.png)
+![Database ID=7c70a486-c3e7-826e-a2e7-87c7e164facb](/images/notion/Notion%20%E5%90%8C%E6%AD%A5%E5%88%B0%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1-819a8f47.png)
 
 
-![NOTION_TOKEN](/images/notion/Notion 同步到博客方案设计-433c2bfa.png)
+![NOTION_TOKEN](/images/notion/Notion%20%E5%90%8C%E6%AD%A5%E5%88%B0%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1-433c2bfa.png)
 
 
 
@@ -313,10 +313,10 @@ NOTION_DATABASE_ID=your_database_id
 ```
 
 
-![image.png](/images/notion/Notion 同步到博客方案设计-74c27119.png)
+![image.png](/images/notion/Notion%20%E5%90%8C%E6%AD%A5%E5%88%B0%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1-74c27119.png)
 
 
-![image.png](/images/notion/Notion 同步到博客方案设计-39f2bc04.png)
+![image.png](/images/notion/Notion%20%E5%90%8C%E6%AD%A5%E5%88%B0%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1-39f2bc04.png)
 
 
 

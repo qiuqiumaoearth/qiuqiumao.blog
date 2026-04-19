@@ -565,7 +565,7 @@ systemctl status nginx
 ## 在 **JupyterLab 里显示隐藏文件/隐藏目录**
 
 
-![image.png](/images/notion/Linux 服务器常用命令速查表-1087c8a1.png)
+![image.png](/images/notion/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8-1087c8a1.png)
 
 
 ```bash
