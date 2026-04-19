@@ -80,8 +80,8 @@ async function processImages(markdown, articleTitle) {
           console.log(`  ✓ 图片已存在: ${filename}`)
         }
 
-        // 替换为本地路径
-        const localUrl = `/images/notion/${filename}`
+        // 替换为本地路径（URL 编码文件名中的空格和特殊字符）
+        const localUrl = `/images/notion/${encodeURIComponent(filename)}`
         processedMarkdown = processedMarkdown.replace(fullMatch, `![${alt}](${localUrl})`)
       } catch (error) {
         console.error(`  ⚠️  图片下载失败: ${imageUrl}`, error.message)
