@@ -8,7 +8,7 @@ import { getThemeConfig } from '@sugarat/theme/node'
 const blogTheme = getThemeConfig({
   // 这里以后可以放博客专属的高级配置，目前我们先保持默认
   home: {
-    pageSize: 5 // 👈 每页显示5篇文章
+    pageSize: 10 // 👈 每页显示5篇文章
   },
 
   author: 'qiumao',
