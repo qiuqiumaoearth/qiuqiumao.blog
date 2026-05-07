@@ -18,6 +18,12 @@ const notion = new Client({
 
 const n2m = new NotionToMarkdown({ notionClient: notion })
 
+// 自定义书签块的转换
+n2m.setCustomTransformer('bookmark', async (block) => {
+  const url = block.bookmark?.url || ''
+  return url
+})
+
 const DATABASE_ID = process.env.NOTION_DATABASE_ID
 
 // 下载图片到本地
